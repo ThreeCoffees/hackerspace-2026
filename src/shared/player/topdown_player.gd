@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export var speed: float = 500.0
+@export var steering: float = 10.0
 @export var camera: Camera3D
 @export var mesh: Node3D
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://21jgufvnqthl"]
+[gd_scene load_steps=6 format=3 uid="uid://21jgufvnqthl"]
 
 [ext_resource type="Script" uid="uid://dlxyudtjsimsq" path="res://shared/player/topdown_player.gd" id="1_w7b20"]
+[ext_resource type="Script" uid="uid://bng704j022xdb" path="res://shared/player/inventory_manager.gd" id="2_34spq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
 
@@ -32,3 +33,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 mesh = SubResource("BoxMesh_w7b20")
 skeleton = NodePath("../..")
+
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("2_34spq")

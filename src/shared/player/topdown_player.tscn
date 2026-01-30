@@ -34,5 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 mesh = SubResource("BoxMesh_w7b20")
 skeleton = NodePath("../..")
 
-[node name="InventoryManager" type="Node" parent="."]
+[node name="InventoryManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_34spq")
+player = NodePath("..")

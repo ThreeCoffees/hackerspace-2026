@@ -9,6 +9,7 @@ enum Item {
 
 @export var interactable_area: Area3D
 @export var item: Item
+@export var count: int
 
 var is_picked: bool = false
 

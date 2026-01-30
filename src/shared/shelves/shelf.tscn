@@ -18,7 +18,7 @@ radius = 2.5
 mesh = SubResource("BoxMesh_4qk54")
 surface_material_override/0 = SubResource("StandardMaterial3D_v7bww")
 script = ExtResource("1_jm8ks")
-interactable_area = NodePath("")
+interactable_area = NodePath("Area3D")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

@@ -2,9 +2,9 @@ class_name Shelf
 extends MeshInstance3D
 
 enum Item {
-	ToiletPaper,
-	Water,
-	Pasta,
+	TOILET_PAPER,
+	WATER,
+	PASTA,
 }
 
 @export var interactable_area: Area3D
@@ -12,6 +12,7 @@ enum Item {
 @export var count: int
 
 var is_picked: bool = false
+
 
 func _input(event: InputEvent) -> void:
 	if is_picked and event.is_action_pressed("interact_primary"):
@@ -21,6 +22,6 @@ func _input(event: InputEvent) -> void:
 func _on_static_body_3d_mouse_exited() -> void:
 	is_picked = false
 
+
 func _on_static_body_3d_mouse_entered() -> void:
 	is_picked = true
-

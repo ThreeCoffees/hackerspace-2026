@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://21jgufvnqthl"]
+
+[ext_resource type="Script" uid="uid://dlxyudtjsimsq" path="res://shared/player/topdown_player.gd" id="1_w7b20"]
+[ext_resource type="Script" uid="uid://bng704j022xdb" path="res://shared/player/inventory_manager.gd" id="2_34spq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8ux74"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w7b20"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="TopdownPlayer" type="CharacterBody3D" node_paths=PackedStringArray("camera", "mesh")]
+script = ExtResource("1_w7b20")
+camera = NodePath("Camera3D")
+mesh = NodePath("Mesh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8ux74")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_8ux74")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+mesh = SubResource("BoxMesh_w7b20")
+skeleton = NodePath("../..")
+
+[node name="InventoryManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_34spq")
+player = NodePath("..")

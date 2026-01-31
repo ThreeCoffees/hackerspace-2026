@@ -1,0 +1,158 @@
+[gd_scene load_steps=22 format=3 uid="uid://bwftuh2iui30a"]
+
+[ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_ybktf"]
+[ext_resource type="Script" uid="uid://cw22yurt5l74k" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_8gjaq"]
+[ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_qquyo"]
+[ext_resource type="Script" uid="uid://dcojdhvj8qcw0" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="3_siocn"]
+[ext_resource type="Script" uid="uid://yutq5qemafh7" path="res://characters/npc/conditions/is_player_closer_than_tolerance_range_condition_leaf.gd" id="4_00sxs"]
+[ext_resource type="Script" uid="uid://bv1doo3fxd3ch" path="res://characters/npc/actions/avoid_player_action.gd" id="5_00sxs"]
+[ext_resource type="Script" uid="uid://2qri6rrfv8ui" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="5_q4wbi"]
+[ext_resource type="Script" uid="uid://cv74jjdrwevpr" path="res://addons/beehave/nodes/leaves/action.gd" id="5_siocn"]
+[ext_resource type="Script" uid="uid://c5v7wuqn1xvdy" path="res://addons/beehave/nodes/decorators/repeater.gd" id="6_q4wbi"]
+[ext_resource type="Script" uid="uid://crkjak4kyv56m" path="res://addons/beehave/nodes/decorators/inverter.gd" id="7_7i7ie"]
+[ext_resource type="Script" uid="uid://dd8lrjdy885gg" path="res://addons/beehave/nodes/leaves/blackboard_has.gd" id="7_de0ny"]
+[ext_resource type="Script" uid="uid://8hn4kne15ac5" path="res://addons/beehave/nodes/composites/selector.gd" id="7_iatqx"]
+[ext_resource type="Script" uid="uid://dorri1tul8gfx" path="res://addons/beehave/nodes/decorators/delayer.gd" id="7_mbiq8"]
+[ext_resource type="Script" uid="uid://b83pbwnftlwif" path="res://characters/npc/actions/set_random_point_action.gd" id="8_qquyo"]
+[ext_resource type="Script" uid="uid://b4tnejgjlcvvb" path="res://characters/npc/actions/wander_to_random_point_action.gd" id="9_00sxs"]
+[ext_resource type="Script" uid="uid://ddhsfkkj5pmp5" path="res://characters/npc/actions/grab_decoy_item_action.gd" id="9_prdpc"]
+[ext_resource type="Script" uid="uid://r8b0istslwhq" path="res://addons/beehave/nodes/leaves/blackboard_erase.gd" id="10_sbqef"]
+[ext_resource type="Script" uid="uid://b7a83gi81apkr" path="res://characters/npc/actions/set_checkout_target_action.gd" id="11_mbiq8"]
+[ext_resource type="Script" uid="uid://cvq483a337v6s" path="res://addons/beehave/nodes/leaves/blackboard_set.gd" id="13_gj276"]
+[ext_resource type="Script" uid="uid://1i4qsr4u0fuu" path="res://characters/npc/actions/go_to_checkout_action.gd" id="15_6pbvg"]
+[ext_resource type="Script" uid="uid://673qljb6s6pm" path="res://characters/npc/actions/leave_store_action.gd" id="18_iatqx"]
+
+[node name="BeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_ybktf")
+blackboard = NodePath("@Node@128524")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
+
+[node name="SelectorReactiveComposite" type="Node" parent="."]
+script = ExtResource("2_8gjaq")
+metadata/_custom_type_script = "uid://cw22yurt5l74k"
+
+[node name="AvoidPlayer" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_siocn")
+metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
+
+[node name="IsPlayerCloserThanToleranceRangeConditionLeaf" type="Node" parent="SelectorReactiveComposite/AvoidPlayer"]
+script = ExtResource("4_00sxs")
+metadata/_custom_type_script = "uid://cbnbvj8prv63i"
+
+[node name="CooldownDecorator" type="Node" parent="SelectorReactiveComposite/AvoidPlayer"]
+script = ExtResource("5_q4wbi")
+wait_time = 0.1
+metadata/_custom_type_script = "uid://2qri6rrfv8ui"
+
+[node name="AvoidPlayerAction" type="Node" parent="SelectorReactiveComposite/AvoidPlayer/CooldownDecorator"]
+script = ExtResource("5_00sxs")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="GrabDecoyItem" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_qquyo")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="DecoyItemLocated" type="Node" parent="SelectorReactiveComposite/GrabDecoyItem"]
+script = ExtResource("7_de0ny")
+key = "\"item_position\""
+metadata/_custom_type_script = "uid://dd8lrjdy885gg"
+
+[node name="CooldownDecorator2" type="Node" parent="SelectorReactiveComposite/GrabDecoyItem"]
+script = ExtResource("5_q4wbi")
+wait_time = 0.1
+metadata/_custom_type_script = "uid://2qri6rrfv8ui"
+
+[node name="GrabDecoyItemAction" type="Node" parent="SelectorReactiveComposite/GrabDecoyItem/CooldownDecorator2"]
+script = ExtResource("9_prdpc")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="BlackboardEraseAction" type="Node" parent="SelectorReactiveComposite/GrabDecoyItem"]
+script = ExtResource("10_sbqef")
+key = "\"Item_position\""
+metadata/_custom_type_script = "uid://r8b0istslwhq"
+
+[node name="DoShopping" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("7_iatqx")
+metadata/_custom_type_script = "uid://8hn4kne15ac5"
+
+[node name="GatherItems" type="Node" parent="SelectorReactiveComposite/DoShopping"]
+script = ExtResource("3_siocn")
+metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
+
+[node name="InverterDecorator" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems"]
+script = ExtResource("7_7i7ie")
+metadata/_custom_type_script = "uid://crkjak4kyv56m"
+
+[node name="IsActorFinishedWithShopping" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems/InverterDecorator"]
+script = ExtResource("7_de0ny")
+key = "\"is_finished\""
+metadata/_custom_type_script = "uid://dd8lrjdy885gg"
+
+[node name="ShopAround" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems"]
+script = ExtResource("6_q4wbi")
+repetitions = 2
+metadata/_custom_type_script = "uid://c5v7wuqn1xvdy"
+
+[node name="DelayDecorator" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems/ShopAround"]
+script = ExtResource("7_mbiq8")
+wait_time = 5.0
+metadata/_custom_type_script = "uid://dorri1tul8gfx"
+
+[node name="SequenceComposite" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems/ShopAround/DelayDecorator"]
+script = ExtResource("3_qquyo")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="SetRandomPointAction" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems/ShopAround/DelayDecorator/SequenceComposite"]
+script = ExtResource("8_qquyo")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="WanderToRandomPointAction" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems/ShopAround/DelayDecorator/SequenceComposite"]
+script = ExtResource("9_00sxs")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="BlackboardSetAction" type="Node" parent="SelectorReactiveComposite/DoShopping/GatherItems"]
+script = ExtResource("13_gj276")
+key = "\"is_finished\""
+value = "true"
+metadata/_custom_type_script = "uid://cvq483a337v6s"
+
+[node name="FinishShopping" type="Node" parent="SelectorReactiveComposite/DoShopping"]
+script = ExtResource("3_siocn")
+metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
+
+[node name="InverterDecorator" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping"]
+script = ExtResource("7_7i7ie")
+metadata/_custom_type_script = "uid://crkjak4kyv56m"
+
+[node name="BlackboardHasCondition" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping/InverterDecorator"]
+script = ExtResource("7_de0ny")
+key = "\"is_checked_out\""
+metadata/_custom_type_script = "uid://dd8lrjdy885gg"
+
+[node name="SetCheckoutTargetAction" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping"]
+script = ExtResource("11_mbiq8")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="GoToCheckoutAction" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping"]
+script = ExtResource("15_6pbvg")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="DelayDecorator" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping"]
+script = ExtResource("7_mbiq8")
+wait_time = 0.5
+metadata/_custom_type_script = "uid://dorri1tul8gfx"
+
+[node name="LeaveStoreAction" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping/DelayDecorator"]
+script = ExtResource("18_iatqx")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="BlackboardSetAction" type="Node" parent="SelectorReactiveComposite/DoShopping/FinishShopping"]
+script = ExtResource("13_gj276")
+key = "\"is_checked_out\""
+value = "true"
+metadata/_custom_type_script = "uid://cvq483a337v6s"
+
+[node name="ActionLeaf" type="Node" parent="SelectorReactiveComposite/DoShopping"]
+script = ExtResource("5_siocn")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"

@@ -26,10 +26,16 @@ interactable_area = NodePath("Area3D")
 shape = SubResource("BoxShape3D_4qk54")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_jm8ks")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+height = 3.0
+vertices = PackedVector3Array(-0.98418176, 0, -1.0051656, 0.977798, 0, -0.9686378, 1.0270973, 0, 0.9713696, -1.0182222, 0, 0.9858388)
+affect_navigation_mesh = true
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

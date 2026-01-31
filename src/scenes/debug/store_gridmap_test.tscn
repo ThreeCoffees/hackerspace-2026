@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c36doghn0u6mp"]
+[gd_scene load_steps=9 format=3 uid="uid://c36doghn0u6mp"]
 
 [ext_resource type="PackedScene" uid="uid://21jgufvnqthl" path="res://characters/player/player.tscn" id="1_bhhg2"]
 [ext_resource type="PackedScene" uid="uid://bhluvyhmdu20o" path="res://shared/shelves/shelf.tscn" id="2_ixnwg"]
@@ -13,9 +13,12 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 agent_height = 1.9
 agent_radius = 0.4
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_guv7h"]
+
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bhhg2")]
+is_mask_on = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 0, 0, 0)
@@ -77,6 +80,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
 [node name="NPC" parent="." instance=ExtResource("6_guv7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
+collision_layer = 2
+
+[node name="Area3D" type="Area3D" parent="NPC" groups=["npc"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC/Area3D" groups=["npc"]]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("SphereShape3D_guv7h")
+debug_color = Color(0.8336495, 0.39051822, 0, 0.41960785)
 
 [node name="NPC2" parent="." instance=ExtResource("6_guv7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.460136, 0.54999924, 3.4373956)
+collision_layer = 2
+
+[node name="Area3D" type="Area3D" parent="NPC2" groups=["npc"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.460136, -0.049999237, 5.5626044)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC2/Area3D" groups=["npc"]]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_guv7h")
+debug_color = Color(0.8336495, 0.39051822, 0, 0.41960785)

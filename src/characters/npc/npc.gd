@@ -18,14 +18,29 @@ func _ready() -> void:
 	behavior_tree.blackboard.set_value("player", get_tree().get_first_node_in_group("player"))
 
 
+var proximity_timer := 0.0
+const PROXIMITY_DURATION := 5.0
+const PROXIMITY_RADIUS := 3.4
+
 func _physics_process(_delta: float) -> void:
 	var next_path_node = nav_agent.get_next_path_position()
 	var dir = global_position.direction_to(next_path_node)
 	var new_vel = dir * speed
-
 	nav_agent.velocity = new_vel
+
 	dir.y = 0
 	rotation.y = 3 * PI / 2 + atan2(velocity.x, velocity.z)
+
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		var distance = global_position.distance_to(player.global_position)
+
+		if distance < PROXIMITY_RADIUS:
+			proximity_timer += _delta
+			if proximity_timer >= PROXIMITY_DURATION:
+				get_tree().quit()
+		else:
+			proximity_timer = 0.0
 
 
 func _on_velocity_computed(safe_vel: Vector3) -> void:

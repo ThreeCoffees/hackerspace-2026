@@ -1,10 +1,6 @@
 extends Node
 
 @export var player: CharacterBody3D
-@export var item_scene: PackedScene
-@export var throw_strength: float = 50.0
-@export var throw_offset: float = 1.0
-@export var throw_height: float = 1.0
 
 var inventory: Dictionary[Shelf.Item, int] = {}
 var active_item_idx: int = 0:
@@ -15,13 +11,16 @@ var active_item_idx: int = 0:
 			active_item_idx = new_value % inventory.size()
 		print(get_active_item())
 
+
 func get_active_item() -> Shelf.Item:
 	if inventory.is_empty():
 		return Shelf.Item.NONE
 	return inventory.keys()[active_item_idx]
 
+
 func _ready() -> void:
 	EventBus.interacted_with_shelf.connect(_on_interacted_with_shelf)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("switch_active_item_next"):
@@ -31,14 +30,16 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("throw_item"):
 		throw_item()
 
+
 func _on_interacted_with_shelf(shelf: Shelf) -> void:
 	if shelf.count <= 0:
 		return
 	if not shelf.interactable_area.overlaps_body(player):
 		return
-	
+
 	inventory[shelf.item] = inventory.get(shelf.item, 0) + 1
 	shelf.count -= 1
+
 
 func throw_item() -> void:
 	if not get_active_item() in inventory:
@@ -52,4 +53,3 @@ func throw_item() -> void:
 
 	print("item %s was thrown" % [thrown_item])
 	EventBus.item_thrown.emit(thrown_item)
-	

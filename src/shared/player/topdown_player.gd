@@ -10,6 +10,7 @@ var mouse_position: Vector2 = Vector2.ZERO
 var move_direction: Vector3 = Vector3.ZERO
 var look_direction: float = 0.0
 
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_position = event.position
@@ -22,8 +23,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity = move_direction * speed * delta
 
-	look_direction = 2 * PI - (Vector2(get_window().size)/2).angle_to_point(mouse_position)
+	look_direction = 2 * PI - (Vector2(get_window().size) / 2).angle_to_point(mouse_position)
 	mesh.rotation.y = look_direction
 
 	move_and_slide()
-	

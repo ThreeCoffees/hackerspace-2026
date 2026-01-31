@@ -4,8 +4,10 @@ extends Node
 @export var item_scenes: Dictionary[Shelf.Item, PackedScene]
 @export var throw_strength: float = 10.0
 
+
 func _ready() -> void:
 	EventBus.item_thrown.connect(_on_item_thrown)
+
 
 func _on_item_thrown(item: Shelf.Item) -> void:
 	print("item thrown")

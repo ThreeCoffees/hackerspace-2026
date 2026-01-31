@@ -2,13 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b0xbwpjtcwaee" path="res://characters/player/player.gd" id="1_ixbpm"]
 [ext_resource type="PackedScene" uid="uid://dv6545dytnc61" path="res://shared/inventory/inventory_manager.tscn" id="1_jpmhp"]
+[ext_resource type="PackedScene" uid="uid://d1wvwme7n38wb" path="res://characters/player/player_model.tscn" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://bu5ktsrrhx1m0" path="res://shared/items/item_thrower.tscn" id="2_qlt8v"]
 [ext_resource type="Script" uid="uid://c00oi0hjb8n2a" path="res://shared/shopping_list/shopping_list.gd" id="4_tjvp7"]
 [ext_resource type="Script" uid="uid://t26kr3y2dqff" path="res://shared/movement/topdown_movement.gd" id="5_5hwp2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8ux74"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w7b20"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -26,10 +25,34 @@ shape = SubResource("CapsuleShape3D_8ux74")
 
 [node name="Mesh" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_8ux74")
-skeleton = NodePath("../..")
+[node name="player" parent="Mesh" instance=ExtResource("2_c6leb")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.2137508, -0.06541091)
+
+[node name="Skeleton3D" parent="Mesh/player/Armature" index="0"]
+bones/1/rotation = Quaternion(0.23281766, -0.0014630925, -0.010069685, 0.97246724)
+bones/2/rotation = Quaternion(-0.17546129, -0.3941984, 0.7795493, 0.45400864)
+bones/3/rotation = Quaternion(0.469893, 0.17912504, 0.38571417, 0.773524)
+bones/5/rotation = Quaternion(-0.0667927, 0.15735607, 0.8501017, -0.4981013)
+bones/6/rotation = Quaternion(0.5727701, -0.38482773, -0.005626685, 0.7237475)
+bones/8/rotation = Quaternion(0.31526172, 0.47814578, -0.5495361, -0.6082735)
+bones/9/rotation = Quaternion(-0.0023833737, -0.0003992799, 8.0350495e-05, 0.9999971)
+bones/11/rotation = Quaternion(-0.5195421, 0.64986444, -0.3326276, 0.44397196)
+bones/12/rotation = Quaternion(-0.72171885, 0.00027636086, -0.024330767, 0.6917586)
+bones/13/position = Vector3(-1.2734231, -0.84435356, -0.5487865)
+bones/13/rotation = Quaternion(0.06397949, 0.47919124, 0.8679923, -0.113453865)
+bones/14/position = Vector3(-0.5581598, -2.4750233, 0.62281746)
+bones/14/rotation = Quaternion(-1.3767878e-07, 0.7071068, -0.7071068, 1.3767878e-07)
+bones/15/position = Vector3(-0.0016240979, -0.26385126, -0.41302714)
+bones/15/rotation = Quaternion(1, 0, -3.1391644e-07, 0)
+bones/16/position = Vector3(0.5581598, -1.9873006, -0.41448933)
+bones/16/rotation = Quaternion(8.5968935e-08, 0.89724684, -0.44152945, -1.7470042e-07)
+bones/17/position = Vector3(1.8742833e-07, -0.15903753, -0.39660642)
+bones/17/rotation = Quaternion(1, 2.990205e-15, 3.1391644e-07, 7.4505797e-09)
+bones/18/position = Vector3(1.3690125, -0.7247021, 0.8783794)
+bones/18/rotation = Quaternion(0.007343052, 0.8053275, 0.57307744, -0.15157811)
+
+[node name="Cube" parent="Mesh/player/Armature/Skeleton3D" index="0"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
@@ -55,9 +78,12 @@ list_generation_weights = Dictionary[int, int]({
 })
 list_generation_count = 5
 
-[node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh")]
+[node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh", "animation")]
 script = ExtResource("5_5hwp2")
 player = NodePath("..")
 speed = 10.0
 camera = NodePath("../Camera3D")
 mesh = NodePath("../Mesh")
+animation = NodePath("../Mesh/player/AnimationPlayer")
+
+[editable path="Mesh/player"]

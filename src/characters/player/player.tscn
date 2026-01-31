@@ -59,5 +59,6 @@ list_generation_count = 5
 [node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh")]
 script = ExtResource("5_5hwp2")
 player = NodePath("..")
+speed = 10.0
 camera = NodePath("../Camera3D")
 mesh = NodePath("../Mesh")

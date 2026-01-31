@@ -1,26 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://b25ciyddvh80l"]
+[gd_scene load_steps=6 format=3 uid="uid://b25ciyddvh80l"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
+[ext_resource type="Script" uid="uid://bhhs2euf4ni8e" path="res://characters/npc/npc.gd" id="1_hiqpq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hiqpq"]
+radius = 0.4
+height = 1.9
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ux74"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jws3k"]
+albedo_color = Color(0, 0.4666667, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_w7b20"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="NPC" type="CharacterBody3D" groups=["player"]]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "wait_timer") groups=["npc"]]
+motion_mode = 1
+script = ExtResource("1_hiqpq")
+nav_agent = NodePath("NavigationAgent3D")
+speed = 2.0
+wait_timer = NodePath("WaitTimer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_8ux74")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_hiqpq")
 
 [node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_8ux74")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jws3k")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 mesh = SubResource("BoxMesh_w7b20")
 skeleton = NodePath("../..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

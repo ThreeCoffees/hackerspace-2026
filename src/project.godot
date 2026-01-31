@@ -21,6 +21,8 @@ EventBus="*res://autoload/event_bus.gd"
 [global_group]
 
 player=""
+npc=""
+nav_region=""
 
 [input]
 

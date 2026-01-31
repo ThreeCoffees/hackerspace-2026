@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var nav_agent: NavigationAgent3D
 @export var speed: float = 3.0
 @export var tolerance_distance: float = 30.0
+@export var tolerance_distance_masked_modifier: float = 0.5 
 @export var run_away_distance: float = 10.0
 @export var behavior_tree: BeehaveTree
 

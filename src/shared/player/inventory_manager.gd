@@ -51,11 +51,5 @@ func throw_item() -> void:
 		active_item_idx = 0
 
 	print("item %s was thrown" % [thrown_item])
-
-	var i = item_scene.instantiate() as RigidBody3D
-	get_tree().root.add_child(i)
-	var throw_direction = Vector3.RIGHT.rotated(Vector3.UP, player.look_direction)
-	i.position = player.position + throw_direction * throw_offset
-	i.position.y += throw_height
-	i.apply_central_impulse(throw_direction * throw_strength)
+	EventBus.item_thrown.emit(thrown_item)
 	

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5ktsrrhx1m0"]
+
+[ext_resource type="Script" uid="uid://dl0out0hu1r1a" path="res://shared/items/item_thrower.gd" id="1_l23ya"]
+[ext_resource type="PackedScene" uid="uid://chn1w0yxa6lv" path="res://shared/items/thrown_item.tscn" id="2_v2ndb"]
+
+[node name="ItemThrower" type="Node" node_paths=PackedStringArray("item_spawn")]
+script = ExtResource("1_l23ya")
+item_spawn = NodePath("")
+item_scenes = Dictionary[int, PackedScene]({
+0: ExtResource("2_v2ndb"),
+1: ExtResource("2_v2ndb"),
+2: ExtResource("2_v2ndb")
+})

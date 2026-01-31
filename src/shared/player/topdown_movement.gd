@@ -1,7 +1,8 @@
-extends CharacterBody3D
+extends Node
+
+@export var player: CharacterBody3D
 
 @export var speed: float = 500.0
-@export var steering: float = 10.0
 @export var camera: Camera3D
 @export var mesh: Node3D
 
@@ -21,9 +22,9 @@ func _physics_process(delta: float) -> void:
 	move_direction.z = Input.get_axis("move_up", "move_down")
 	move_direction = move_direction.normalized()
 
-	velocity = move_direction * speed * delta
+	player.velocity = move_direction * speed * delta
 
 	look_direction = 2 * PI - (Vector2(get_window().size) / 2).angle_to_point(mouse_position)
 	mesh.rotation.y = look_direction
 
-	move_and_slide()
+	player.move_and_slide()

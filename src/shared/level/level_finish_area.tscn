@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmjm76dt4465y"]
+
+[ext_resource type="Script" uid="uid://wuhtwdq5gyin" path="res://shared/level/level_finish_area.gd" id="1_um5dd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_611pf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_611pf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um5dd"]
+albedo_color = Color(1, 0.20999998, 0.96050024, 1)
+
+[node name="LevelFinishArea" type="Area3D"]
+monitoring = false
+monitorable = false
+script = ExtResource("1_um5dd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_611pf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_611pf")
+surface_material_override/0 = SubResource("StandardMaterial3D_um5dd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

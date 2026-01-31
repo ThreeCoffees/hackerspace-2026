@@ -1,6 +1,7 @@
 extends Node
 
 @export var player: CharacterBody3D
+@export var shopping_list: ShoppingList
 
 var inventory: Dictionary[Shelf.Item, int] = {}
 var active_item_idx: int = 0:
@@ -20,6 +21,7 @@ func get_active_item() -> Shelf.Item:
 
 func _ready() -> void:
 	EventBus.interacted_with_shelf.connect(_on_interacted_with_shelf)
+	EventBus.checked_out.connect(_on_checked_out)
 
 
 func _input(event: InputEvent) -> void:
@@ -39,6 +41,7 @@ func _on_interacted_with_shelf(shelf: Shelf) -> void:
 
 	inventory[shelf.item] = inventory.get(shelf.item, 0) + 1
 	shelf.count -= 1
+	print(inventory)
 
 
 func throw_item() -> void:
@@ -53,3 +56,9 @@ func throw_item() -> void:
 
 	print("item %s was thrown" % [thrown_item])
 	EventBus.item_thrown.emit(thrown_item)
+
+
+func _on_checked_out() -> void:
+	if shopping_list.is_fulfilled(inventory):
+		EventBus.shopping_list_fulfilled.emit()
+		print("List Fulfilled")

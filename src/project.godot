@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 
 EventBus="*res://autoload/event_bus.gd"
 
+[importer_defaults]
+
+animation_library={
+&"gltf/embedded_image_handling": 2
+}
+
 [input]
 
 move_up={

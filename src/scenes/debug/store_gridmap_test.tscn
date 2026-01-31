@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c36doghn0u6mp"]
 
-[ext_resource type="PackedScene" uid="uid://21jgufvnqthl" path="res://autoload/player.tscn" id="1_bhhg2"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_guv7h"]
 [ext_resource type="PackedScene" uid="uid://bhluvyhmdu20o" path="res://shared/shelves/shelf.tscn" id="2_ixnwg"]
 [ext_resource type="PackedScene" uid="uid://do4sbvw4qreyk" path="res://shared/checkout/Checkout.tscn" id="3_guv7h"]
 [ext_resource type="PackedScene" uid="uid://bmjm76dt4465y" path="res://shared/level/level_finish_area.tscn" id="4_imxur"]
@@ -17,8 +17,7 @@ agent_radius = 0.4
 
 [node name="Level" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_bhhg2")]
-is_mask_on = true
+[node name="player" parent="." groups=["player"] instance=ExtResource("1_guv7h")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 0, 0, 0)

@@ -1,45 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://21jgufvnqthl"]
+[gd_scene load_steps=15 format=4 uid="uid://cvynwffsohlhb"]
 
-[ext_resource type="PackedScene" uid="uid://dv6545dytnc61" path="res://shared/inventory/inventory_manager.tscn" id="1_jpmhp"]
-[ext_resource type="PackedScene" uid="uid://bu5ktsrrhx1m0" path="res://shared/items/item_thrower.tscn" id="2_qlt8v"]
-[ext_resource type="Script" uid="uid://c00oi0hjb8n2a" path="res://shared/shopping_list/shopping_list.gd" id="4_tjvp7"]
-[ext_resource type="Script" uid="uid://t26kr3y2dqff" path="res://shared/movement/topdown_movement.gd" id="5_5hwp2"]
+[ext_resource type="Script" uid="uid://cnxe0xtqaup2j" path="res://scripts/player.gd" id="1_g2els"]
 
-[sub_resource type="GDScript" id="GDScript_jmbxg"]
-script/source = "extends CharacterBody3D
-
-@export var is_mask_on: bool = true
-
-@onready var camera_mount = $camera_mount
-@onready var animation_player = $visuals/mixamo_base/AnimationPlayer
-@onready var visuals = $visuals
-
-var SPEED = 2.8
-const JUMP_VELOCITY = 4.5
-
-var walking_speed = 3.0
-var running_speed = 5.0
-
-var running = false
-
-@export var sens_horizontal = 0.15
-@export var sens_vertical = 0.15
-
-@export var max_look_up := 60.0
-@export var max_look_down := -40.0
-
-var camera_pitch := 0.0
-
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(\"toggle_mask\"):
-		is_mask_on = not is_mask_on
-		print(\"is mask on:\", is_mask_on)
-		
-		
-"
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj8y3"]
 resource_name = "Beta_Joints_MAT1"
@@ -48,7 +11,7 @@ albedo_color = Color(0.612501, 0.38787553, 0.35089412, 1)
 metallic = 0.5
 roughness = 0.8585786
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_w3paq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_helgn"]
 resource_name = "mixamo_base_Beta_Joints"
 _surfaces = [{
 "aabb": AABB(-0.8834671, -0.00035117482, -0.12990499, 1.7669338, 1.5967934, 0.2549244),
@@ -68,7 +31,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_7fg0a"]
+[sub_resource type="Skin" id="Skin_eljci"]
 resource_name = "Skin"
 bind_count = 65
 bind/0/name = &"mixamorig_Hips"
@@ -273,7 +236,7 @@ cull_mode = 2
 albedo_color = Color(0.9246135, 0.58587474, 0.55036527, 1)
 roughness = 0.80829155
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_jle21"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5x0ex"]
 resource_name = "mixamo_base_Beta_Surface"
 _surfaces = [{
 "aabb": AABB(-0.9025662, -0.00032194963, -0.14895688, 1.805132, 1.8092052, 0.32069856),
@@ -3478,25 +3441,22 @@ _data = {
 &"walking": SubResource("Animation_wf60d")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2174544, 0)
+script = ExtResource("1_g2els")
 
-[sub_resource type="BoxMesh" id="BoxMesh_w7b20"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_layer = 2
-script = SubResource("GDScript_jmbxg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86888325, 0)
+shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="camera_mount" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0.309017, -0.95105654, 0, 0.95105654, 0.309017, 1, 1.3507562e-08, -4.1572e-08, 0.111519754, 1.6591973, 0.055133253)
+transform = Transform3D(-1, 2.7015124e-08, -8.3144e-08, 0, 0.95105654, 0.309017, 8.742278e-08, 0.309017, -0.95105654, 0, 1.6591973, 0.14335284)
 
 [node name="Camera3D" type="Camera3D" parent="camera_mount"]
 
 [node name="visuals" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10207355, 0, 0.13730359)
 
 [node name="mixamo_base" type="Node3D" parent="visuals"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="visuals/mixamo_base"]
 transform = Transform3D(0.01, 0, 0, 0, -1.192093e-09, -0.01, 0, 0.01, -1.192093e-09, 0, 0, 0)
@@ -3959,53 +3919,15 @@ bones/64/rotation = Quaternion(-1.6711693e-08, -0.011869149, -4.980725e-10, 0.99
 bones/64/scale = Vector3(1, 1, 1)
 
 [node name="Beta_Joints" type="MeshInstance3D" parent="visuals/mixamo_base/Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_w3paq")
-skin = SubResource("Skin_7fg0a")
+mesh = SubResource("ArrayMesh_helgn")
+skin = SubResource("Skin_eljci")
 
 [node name="Beta_Surface" type="MeshInstance3D" parent="visuals/mixamo_base/Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_jle21")
-skin = SubResource("Skin_7fg0a")
+mesh = SubResource("ArrayMesh_5x0ex")
+skin = SubResource("Skin_eljci")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="visuals/mixamo_base"]
 libraries = {
 &"": SubResource("AnimationLibrary_ko0g7")
 }
 playback_default_blend_time = 0.2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_8ux74")
-
-[node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51882154, 0, 0)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
-mesh = SubResource("BoxMesh_w7b20")
-skeleton = NodePath("../..")
-
-[node name="ThrownItemSpawn" type="Node3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
-
-[node name="InventoryManager" parent="." node_paths=PackedStringArray("player", "shopping_list") instance=ExtResource("1_jpmhp")]
-player = NodePath("..")
-shopping_list = NodePath("../ShoppingList")
-
-[node name="ItemThrower" parent="." node_paths=PackedStringArray("item_spawn") instance=ExtResource("2_qlt8v")]
-item_spawn = NodePath("../Mesh/ThrownItemSpawn")
-
-[node name="ShoppingList" type="Node" parent="."]
-script = ExtResource("4_tjvp7")
-list_generation_weights = Dictionary[int, int]({
-0: 4,
-1: 2,
-2: 1
-})
-list_generation_count = 5
-
-[node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh")]
-script = ExtResource("5_5hwp2")
-player = NodePath("..")
-speed = 10.0
-camera = NodePath("")
-mesh = NodePath("../Mesh")

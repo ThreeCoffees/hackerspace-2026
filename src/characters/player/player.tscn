@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://d1wvwme7n38wb" path="res://characters/player/player_model.tscn" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://bu5ktsrrhx1m0" path="res://shared/items/item_thrower.tscn" id="2_qlt8v"]
 [ext_resource type="Script" uid="uid://c00oi0hjb8n2a" path="res://shared/shopping_list/shopping_list.gd" id="4_tjvp7"]
-[ext_resource type="Script" uid="uid://t26kr3y2dqff" path="res://shared/movement/topdown_movement.gd" id="5_5hwp2"]
 [ext_resource type="PackedScene" uid="uid://bs4temoravv8g" path="res://shared/animation/AnimationComponent.tscn" id="7_dirf7"]
+[ext_resource type="PackedScene" uid="uid://dttvv5oeop8cd" path="res://shared/movement/fps_movement.tscn" id="8_idpv6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
 
@@ -71,15 +71,16 @@ list_generation_weights = Dictionary[int, int]({
 })
 list_generation_count = 5
 
-[node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh")]
-script = ExtResource("5_5hwp2")
-player = NodePath("..")
-speed = 10.0
-camera = NodePath("../Camera3D")
-mesh = NodePath("../Mesh")
-
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("player", "animation") instance=ExtResource("7_dirf7")]
 player = NodePath("..")
 animation = NodePath("../Mesh/player/AnimationPlayer")
 
+[node name="FpsMovement" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("8_idpv6")]
+player = NodePath("..")
+camera = NodePath("../Camera3D")
+
+[node name="CameraMount" parent="FpsMovement" index="0"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.5, 0)
+
 [editable path="Mesh/player"]
+[editable path="FpsMovement"]

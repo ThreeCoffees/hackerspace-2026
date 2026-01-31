@@ -38,7 +38,7 @@ func _physics_process(_delta: float) -> void:
 		if distance < PROXIMITY_RADIUS:
 			proximity_timer += _delta
 			if proximity_timer >= PROXIMITY_DURATION:
-				get_tree().quit()
+				EventBus.game_over.emit()
 		else:
 			proximity_timer = 0.0
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://21jgufvnqthl"]
+[gd_scene load_steps=7 format=3 uid="uid://21jgufvnqthl"]
 
 [ext_resource type="Script" uid="uid://dlxyudtjsimsq" path="res://shared/player/topdown_player.gd" id="1_w7b20"]
-[ext_resource type="Script" uid="uid://bng704j022xdb" path="res://shared/player/inventory_manager.gd" id="2_34spq"]
+[ext_resource type="PackedScene" uid="uid://dv6545dytnc61" path="res://shared/player/inventory_manager.tscn" id="2_34spq"]
+[ext_resource type="PackedScene" uid="uid://chn1w0yxa6lv" path="res://shared/items/thrown_item.tscn" id="3_xiggr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
 
@@ -34,6 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 mesh = SubResource("BoxMesh_w7b20")
 skeleton = NodePath("../..")
 
-[node name="InventoryManager" type="Node" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("2_34spq")
+[node name="InventoryManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_34spq")]
 player = NodePath("..")
+item_scene = ExtResource("3_xiggr")
+throw_strength = 10.0

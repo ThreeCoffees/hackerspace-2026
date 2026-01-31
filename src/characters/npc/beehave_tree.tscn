@@ -50,8 +50,8 @@ script = ExtResource("5_00sxs")
 metadata/_custom_type_script = "uid://cv74jjdrwevpr"
 
 [node name="GrabDecoyItem" type="Node" parent="SelectorReactiveComposite"]
-script = ExtResource("3_qquyo")
-metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+script = ExtResource("3_siocn")
+metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
 
 [node name="DecoyItemLocated" type="Node" parent="SelectorReactiveComposite/GrabDecoyItem"]
 script = ExtResource("7_de0ny")

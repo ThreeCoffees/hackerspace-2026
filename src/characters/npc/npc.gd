@@ -44,6 +44,11 @@ func set_run_away_point(threat_pos: Vector3) -> void:
 	var run_away_point = NavigationServer3D.region_get_closest_point(nav_region.get_rid(), point)
 	nav_agent.target_position = run_away_point
 
+func set_exit_target() -> void:
+	var point = get_tree().get_first_node_in_group("level_finish").global_position
+	var exit_position = NavigationServer3D.region_get_closest_point(nav_region.get_rid(), point)
+	nav_agent.target_position = exit_position
+
 
 func set_checkout_target() -> void:
 	var checkouts  = get_tree().get_nodes_in_group("checkouts")

@@ -3,17 +3,18 @@ extends CharacterBody3D
 
 @export var nav_agent: NavigationAgent3D
 @export var speed: float = 3.0
-@export var wait_timer: Timer
-@export var tolerance_distance: float = 10.0
+@export var tolerance_distance: float = 30.0
+@export var run_away_distance: float = 10.0
+@export var behavior_tree: BeehaveTree
 
 var nav_region: NavigationRegion3D
 
 
 func _ready() -> void:
 	nav_region = get_tree().get_first_node_in_group("nav_region")
-	nav_agent.navigation_finished.connect(set_new_wander_point)
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
-	wait_timer.start()
+
+	behavior_tree.blackboard.set_value("player", get_tree().get_first_node_in_group("player"))
 
 
 func _physics_process(_delta: float) -> void:
@@ -37,5 +38,13 @@ func set_new_wander_point() -> void:
 	nav_agent.target_position = random_point
 
 
-func _on_wait_timer_timeout() -> void:
-	set_new_wander_point()
+func set_run_away_point(threat_pos: Vector3) -> void:
+	var point = threat_pos.direction_to(global_position) * run_away_distance
+	var run_away_point = NavigationServer3D.region_get_closest_point(nav_region.get_rid(), point)
+	nav_agent.target_position = run_away_point
+
+
+func get_larger_vec(a: Vector3, b: Vector3) -> Vector3:
+	if a.length() >= b.length():
+		return a
+	return b

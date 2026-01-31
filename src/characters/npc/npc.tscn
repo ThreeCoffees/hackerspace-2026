@@ -1,6 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b25ciyddvh80l"]
+[gd_scene load_steps=13 format=3 uid="uid://b25ciyddvh80l"]
 
 [ext_resource type="Script" uid="uid://bhhs2euf4ni8e" path="res://characters/npc/npc.gd" id="1_hiqpq"]
+[ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_vb8yn"]
+[ext_resource type="Script" uid="uid://cw22yurt5l74k" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="3_au85k"]
+[ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_0vu31"]
+[ext_resource type="Script" uid="uid://yutq5qemafh7" path="res://characters/npc/conditions/is_player_closer_than_tolerance_range_condition_leaf.gd" id="5_ci4ts"]
+[ext_resource type="Script" uid="uid://cv74jjdrwevpr" path="res://addons/beehave/nodes/leaves/action.gd" id="6_cul2b"]
+[ext_resource type="Script" uid="uid://c5v7wuqn1xvdy" path="res://addons/beehave/nodes/decorators/repeater.gd" id="7_0vu31"]
+[ext_resource type="Script" uid="uid://dorri1tul8gfx" path="res://addons/beehave/nodes/decorators/delayer.gd" id="8_ci4ts"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hiqpq"]
 radius = 0.4
@@ -47,5 +54,58 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="WaitTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_vb8yn")
+blackboard = NodePath("@Node@22240")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
+
+[node name="SelectorReactiveComposite" type="Node" parent="BeehaveTree"]
+script = ExtResource("3_au85k")
+metadata/_custom_type_script = "uid://cw22yurt5l74k"
+
+[node name="AvoidPlayer" type="Node" parent="BeehaveTree/SelectorReactiveComposite"]
+script = ExtResource("4_0vu31")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="IsPlayerCloserThanToleranceRangeConditionLeaf" type="Node" parent="BeehaveTree/SelectorReactiveComposite/AvoidPlayer"]
+script = ExtResource("5_ci4ts")
+metadata/_custom_type_script = "uid://cbnbvj8prv63i"
+
+[node name="AvoidPlayerAction" type="Node" parent="BeehaveTree/SelectorReactiveComposite/AvoidPlayer"]
+script = ExtResource("6_cul2b")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="ShopAround" type="Node" parent="BeehaveTree/SelectorReactiveComposite"]
+script = ExtResource("7_0vu31")
+repetitions = 6
+metadata/_custom_type_script = "uid://c5v7wuqn1xvdy"
+
+[node name="DelayDecorator" type="Node" parent="BeehaveTree/SelectorReactiveComposite/ShopAround"]
+script = ExtResource("8_ci4ts")
+wait_time = 5.0
+metadata/_custom_type_script = "uid://dorri1tul8gfx"
+
+[node name="WanderToRandomPointAction" type="Node" parent="BeehaveTree/SelectorReactiveComposite/ShopAround/DelayDecorator"]
+script = ExtResource("6_cul2b")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="FinishShopping" type="Node" parent="BeehaveTree/SelectorReactiveComposite"]
+script = ExtResource("4_0vu31")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="GoToCheckoutAction" type="Node" parent="BeehaveTree/SelectorReactiveComposite/FinishShopping"]
+script = ExtResource("6_cul2b")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
+
+[node name="DelayDecorator" type="Node" parent="BeehaveTree/SelectorReactiveComposite/FinishShopping"]
+script = ExtResource("8_ci4ts")
+wait_time = 0.5
+metadata/_custom_type_script = "uid://dorri1tul8gfx"
+
+[node name="LeaveStoreAction" type="Node" parent="BeehaveTree/SelectorReactiveComposite/FinishShopping/DelayDecorator"]
+script = ExtResource("6_cul2b")
+metadata/_custom_type_script = "uid://cv74jjdrwevpr"
 
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

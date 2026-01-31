@@ -1,8 +1,10 @@
+class_name NPC
 extends CharacterBody3D
 
 @export var nav_agent: NavigationAgent3D
 @export var speed: float = 3.0
 @export var wait_timer: Timer
+@export var tolerance_distance: float = 10.0
 
 var nav_region: NavigationRegion3D
 

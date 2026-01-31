@@ -6,6 +6,7 @@ extends CharacterBody3D
 
 var nav_region: NavigationRegion3D
 
+
 func _ready() -> void:
 	nav_region = get_tree().get_first_node_in_group("nav_region")
 	nav_agent.navigation_finished.connect(set_new_wander_point)
@@ -13,14 +14,14 @@ func _ready() -> void:
 	wait_timer.start()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var next_path_node = nav_agent.get_next_path_position()
 	var dir = global_position.direction_to(next_path_node)
 	var new_vel = dir * speed
 
 	nav_agent.velocity = new_vel
 	dir.y = 0
-	rotation.y = 3*PI/2 + atan2(velocity.x, velocity.z)
+	rotation.y = 3 * PI / 2 + atan2(velocity.x, velocity.z)
 
 
 func _on_velocity_computed(safe_vel: Vector3) -> void:

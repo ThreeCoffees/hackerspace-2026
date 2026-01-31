@@ -17,12 +17,12 @@ func _input(event: InputEvent) -> void:
 		mouse_position = event.position
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_direction.x = Input.get_axis("move_left", "move_right")
 	move_direction.z = Input.get_axis("move_up", "move_down")
 	move_direction = move_direction.normalized()
 
-	player.velocity = move_direction * speed 
+	player.velocity = move_direction * speed
 
 	look_direction = 2 * PI - (Vector2(get_window().size) / 2).angle_to_point(mouse_position)
 	mesh.rotation.y = look_direction

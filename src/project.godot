@@ -13,3 +13,9 @@ config_version=5
 config/name="Hackerspace2026"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[importer_defaults]
+
+animation_library={
+&"fbx/embedded_image_handling": 2
+}

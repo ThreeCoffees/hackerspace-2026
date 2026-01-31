@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dttvv5oeop8cd"]
+
+[ext_resource type="Script" uid="uid://bqgeyxacrcw3b" path="res://shared/movement/fps_movement.gd" id="1_7xnsj"]
+
+[node name="FpsMovement" type="Node3D" node_paths=PackedStringArray("camera_mount")]
+script = ExtResource("1_7xnsj")
+camera_mount = NodePath("CameraMount")
+
+[node name="CameraMount" type="Node3D" parent="."]

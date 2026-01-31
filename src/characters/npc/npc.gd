@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 @export var nav_agent: NavigationAgent3D
 @export var speed: float = 3.0
+@export var item_speed_modifier: float = 2.0
 @export var tolerance_distance: float = 30.0
 @export var tolerance_distance_masked_modifier: float = 0.5 
 @export var run_away_distance: float = 10.0
@@ -59,3 +60,9 @@ func set_checkout_target() -> void:
 			dest = c.global_position
 
 	nav_agent.target_position = dest
+
+
+func _on_vision_cone_item_visible(position: Vector3) -> void:
+	var closest_item_position = NavigationServer3D.region_get_closest_point(nav_region.get_rid(), position)
+	behavior_tree.blackboard.set_value("item_position", closest_item_position)
+	print("item located at: %s" % [closest_item_position])

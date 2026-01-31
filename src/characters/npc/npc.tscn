@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b25ciyddvh80l"]
+[gd_scene load_steps=8 format=3 uid="uid://b25ciyddvh80l"]
 
 [ext_resource type="Script" uid="uid://bhhs2euf4ni8e" path="res://characters/npc/npc.gd" id="1_hiqpq"]
 [ext_resource type="PackedScene" uid="uid://bwftuh2iui30a" path="res://characters/npc/beehave_tree.tscn" id="2_7o1fx"]
+[ext_resource type="Script" uid="uid://v3wlh7vg7yxh" path="res://shared/decoys/vision_cone.gd" id="3_6oo8j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hiqpq"]
 radius = 0.4
@@ -51,4 +52,9 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("2_7o1fx")]
-blackboard = NodePath("@Node@44122")
+blackboard = NodePath("@Node@103360")
+
+[node name="VisionCone" type="Node3D" parent="."]
+script = ExtResource("3_6oo8j")
+
+[connection signal="item_visible" from="VisionCone" to="." method="_on_vision_cone_item_visible"]

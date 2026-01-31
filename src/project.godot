@@ -32,6 +32,7 @@ npc=""
 nav_region=""
 checkouts=""
 level_finish=""
+decoy_items=""
 
 [input]
 

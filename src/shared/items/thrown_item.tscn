@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://chn1w0yxa6lv"]
+[gd_scene load_steps=5 format=3 uid="uid://chn1w0yxa6lv"]
+
+[ext_resource type="Script" uid="uid://bkmci4fp5bu5g" path="res://shared/items/thrown_item.gd" id="1_xrj14"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ulktt"]
 size = Vector3(0.3, 0.3, 0.3)
@@ -9,7 +11,9 @@ albedo_color = Color(0.26666665, 1, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ulktt"]
 size = Vector3(0.3, 0.3, 0.3)
 
-[node name="ThrownItem" type="RigidBody3D"]
+[node name="ThrownItem" type="RigidBody3D" groups=["decoy_items"]]
+collision_layer = 8
+script = ExtResource("1_xrj14")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ulktt")
@@ -17,3 +21,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ulktt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ulktt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

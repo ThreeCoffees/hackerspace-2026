@@ -76,11 +76,11 @@ data = {
 [node name="Checkout" parent="NavigationRegion3D/Checkouts" instance=ExtResource("3_guv7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="NPC" parent="." instance=ExtResource("6_guv7h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9)
-
-[node name="NPC2" parent="." instance=ExtResource("6_guv7h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.460136, 0.54999924, 3.4373956)
-
 [node name="NPCSpawner" parent="." instance=ExtResource("7_imxur")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -3)
+
+[node name="NPC" parent="NPCSpawner" instance=ExtResource("6_guv7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, 12)
+
+[node name="NPC2" parent="NPCSpawner" instance=ExtResource("6_guv7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.960136, 0.54999924, 6.4373956)

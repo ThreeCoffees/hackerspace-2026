@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0ydfuh2snr8b"]
+
+[ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/textures/grids/Dark/texture_05.png" id="1_ns6u7"]
+[ext_resource type="PackedScene" uid="uid://bq57xavq5alwb" path="res://scenes/player.tscn" id="2_5t4e2"]
+[ext_resource type="PackedScene" uid="uid://bdq6ajic6fjrf" path="res://assets/models/mixamo_base.glb" id="2_xvgsr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ns6u7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_5t4e2"]
+sky_material = SubResource("ProceduralSkyMaterial_ns6u7")
+
+[sub_resource type="Environment" id="Environment_xvgsr"]
+background_mode = 2
+sky = SubResource("Sky_5t4e2")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_texture = ExtResource("1_ns6u7")
+
+[node name="world" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022173047, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xvgsr")
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.451)
+use_collision = true
+size = Vector3(100, 3, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.084, 1, 11.918)
+use_collision = true
+size = Vector3(1, 3, 15)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 43.609)
+use_collision = true
+size = Vector3(100, 3, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.153, 1, 28.634)
+use_collision = true
+size = Vector3(1, 3, 50)
+
+[node name="s" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.085, 1, 16.353)
+use_collision = true
+size = Vector3(100, 3, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.487, 1, 53.066)
+use_collision = true
+size = Vector3(1, 3, 100)
+
+[node name="floor" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010345459, 0, 0.22366142)
+material_override = SubResource("StandardMaterial3D_noarx")
+use_collision = true
+size = Vector3(1000, 0.1, 1000)
+
+[node name="mixamo_base" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5672913, 0.051716655, 11.129641)
+
+[node name="mixamo_base2" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2507172, 0.05171475, 9.7588825)
+
+[node name="mixamo_base3" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3948507, 0.051718563, 10.332429)
+
+[node name="mixamo_base4" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.264052, 0.051716655, 18.251745)
+
+[node name="mixamo_base5" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.919823, 0.051718563, 21.166918)
+
+[node name="mixamo_base6" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.77116, 0.051716655, 38.537666)
+
+[node name="mixamo_base7" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.753059, 0.051716655, 21.141119)
+
+[node name="mixamo_base8" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8560953, 0.051718563, 36.212273)
+
+[node name="mixamo_base9" parent="map" instance=ExtResource("2_xvgsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.70784, 0.051718563, 9.589277)
+
+[node name="Player" parent="." instance=ExtResource("2_5t4e2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.070845, 3.797, 10.63424)
+sens_horizontal = 0.2
+sens_vertical = 0.2

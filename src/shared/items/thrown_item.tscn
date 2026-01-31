@@ -13,6 +13,7 @@ size = Vector3(0.3, 0.3, 0.3)
 
 [node name="ThrownItem" type="RigidBody3D" groups=["decoy_items"]]
 collision_layer = 8
+collision_mask = 17
 script = ExtResource("1_xrj14")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

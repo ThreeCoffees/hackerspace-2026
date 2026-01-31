@@ -52,9 +52,10 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("2_7o1fx")]
-blackboard = NodePath("@Node@103360")
+blackboard = NodePath("@Node@140209")
 
 [node name="VisionCone" type="Node3D" parent="."]
 script = ExtResource("3_6oo8j")
+view_distance = 20.0
 
 [connection signal="item_visible" from="VisionCone" to="." method="_on_vision_cone_item_visible"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://21jgufvnqthl"]
 
-[ext_resource type="PackedScene" uid="uid://dv6545dytnc61" path="res://shared/player/inventory_manager.tscn" id="1_jpmhp"]
+[ext_resource type="PackedScene" uid="uid://dv6545dytnc61" path="res://shared/inventory/inventory_manager.tscn" id="1_jpmhp"]
 [ext_resource type="PackedScene" uid="uid://bu5ktsrrhx1m0" path="res://shared/items/item_thrower.tscn" id="2_qlt8v"]
-[ext_resource type="Script" uid="uid://cr6vsgegsdwyb" path="res://shared/player/mask_controller.gd" id="3_41573"]
+[ext_resource type="Script" uid="uid://cr6vsgegsdwyb" path="res://shared/mask/mask_controller.gd" id="3_41573"]
 [ext_resource type="Script" uid="uid://c00oi0hjb8n2a" path="res://shared/shopping_list/shopping_list.gd" id="4_tjvp7"]
-[ext_resource type="Script" uid="uid://t26kr3y2dqff" path="res://shared/player/topdown_movement.gd" id="5_5hwp2"]
+[ext_resource type="Script" uid="uid://t26kr3y2dqff" path="res://shared/movement/topdown_movement.gd" id="5_5hwp2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
 

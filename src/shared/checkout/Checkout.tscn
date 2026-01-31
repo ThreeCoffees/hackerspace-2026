@@ -29,6 +29,10 @@ shape = SubResource("BoxShape3D_mnob1")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+vertices = PackedVector3Array(-0.5805845, 0, -0.5460993, -0.6105423, 0, 2.0843713, 0.4874027, 0, 2.0779934, 0.48022172, 0, -0.7150172)
+affect_navigation_mesh = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -64,5 +64,8 @@ func set_checkout_target() -> void:
 
 func _on_vision_cone_item_visible(position: Vector3) -> void:
 	var closest_item_position = NavigationServer3D.region_get_closest_point(nav_region.get_rid(), position)
+	if behavior_tree.blackboard.has_value("item_position"):
+		if global_position.distance_to(closest_item_position) > global_position.distance_to(behavior_tree.blackboard.get_value("item_position")):
+			closest_item_position = behavior_tree.blackboard.get_value("item_position")
 	behavior_tree.blackboard.set_value("item_position", closest_item_position)
 	print("item located at: %s" % [closest_item_position])

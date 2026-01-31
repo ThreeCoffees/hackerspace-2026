@@ -4,7 +4,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnob1"]
 
-[node name="Checkout" type="Node3D" node_paths=PackedStringArray("checkout_area", "checkout_timer")]
+[node name="Checkout" type="Node3D" node_paths=PackedStringArray("checkout_area", "checkout_timer") groups=["checkouts"]]
 script = ExtResource("1_2gt20")
 checkout_area = NodePath("Area3D")
 checkout_timer = NodePath("Timer")

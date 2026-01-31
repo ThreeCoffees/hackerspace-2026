@@ -45,7 +45,12 @@ func set_run_away_point(threat_pos: Vector3) -> void:
 	nav_agent.target_position = run_away_point
 
 
-func get_larger_vec(a: Vector3, b: Vector3) -> Vector3:
-	if a.length() >= b.length():
-		return a
-	return b
+func set_checkout_target() -> void:
+	var checkouts  = get_tree().get_nodes_in_group("checkouts")
+	var dest = Vector3(10000,0,0)
+	for c in checkouts:
+		c = c as Checkout
+		if c.checkout_area.global_position.distance_to(global_position) <= dest.distance_to(global_position):
+			dest = c.global_position
+
+	nav_agent.target_position = dest

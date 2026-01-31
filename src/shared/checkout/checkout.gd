@@ -1,3 +1,4 @@
+class_name Checkout
 extends Node3D
 
 @export var checkout_area: Area3D

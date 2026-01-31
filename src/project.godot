@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 player=""
 npc=""
 nav_region=""
+checkouts=""
 
 [input]
 

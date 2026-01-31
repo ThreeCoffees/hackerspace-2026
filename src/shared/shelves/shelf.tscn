@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhluvyhmdu20o"]
+
+[ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_jm8ks"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qk54"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7bww"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qk54"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jm8ks"]
+radius = 2.5
+
+[node name="Shelf1" type="MeshInstance3D" node_paths=PackedStringArray("interactable_area")]
+mesh = SubResource("BoxMesh_4qk54")
+surface_material_override/0 = SubResource("StandardMaterial3D_v7bww")
+script = ExtResource("1_jm8ks")
+interactable_area = NodePath("Area3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_4qk54")
+
+[node name="Area3D" type="Area3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jm8ks")
+
+[connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

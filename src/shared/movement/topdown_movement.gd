@@ -5,7 +5,6 @@ extends Node
 @export var speed: float = 50.0
 @export var camera: Camera3D
 @export var mesh: Node3D
-@export var animation: AnimationPlayer
 
 var mouse_position: Vector2 = Vector2.ZERO
 
@@ -24,11 +23,6 @@ func _physics_process(_delta: float) -> void:
 	move_direction = move_direction.normalized()
 
 	player.velocity = move_direction * speed
-
-	if not player.velocity.is_zero_approx():
-		animation.play("Run")
-	else:
-		animation.pause()
 
 	look_direction = 2 * PI - (Vector2(get_window().size) / 2).angle_to_point(mouse_position)
 	mesh.rotation.y = look_direction

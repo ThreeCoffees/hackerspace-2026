@@ -6,11 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bu5ktsrrhx1m0" path="res://shared/items/item_thrower.tscn" id="2_qlt8v"]
 [ext_resource type="Script" uid="uid://c00oi0hjb8n2a" path="res://shared/shopping_list/shopping_list.gd" id="4_tjvp7"]
 [ext_resource type="Script" uid="uid://t26kr3y2dqff" path="res://shared/movement/topdown_movement.gd" id="5_5hwp2"]
+[ext_resource type="PackedScene" uid="uid://bs4temoravv8g" path="res://shared/animation/AnimationComponent.tscn" id="7_dirf7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_w7b20"]
-size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -54,11 +52,6 @@ bones/18/rotation = Quaternion(0.007343052, 0.8053275, 0.57307744, -0.15157811)
 [node name="Cube" parent="Mesh/player/Armature/Skeleton3D" index="0"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
-mesh = SubResource("BoxMesh_w7b20")
-skeleton = NodePath("../..")
-
 [node name="ThrownItemSpawn" type="Node3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 
@@ -78,12 +71,15 @@ list_generation_weights = Dictionary[int, int]({
 })
 list_generation_count = 5
 
-[node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh", "animation")]
+[node name="TopdownMovement" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "mesh")]
 script = ExtResource("5_5hwp2")
 player = NodePath("..")
 speed = 10.0
 camera = NodePath("../Camera3D")
 mesh = NodePath("../Mesh")
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("player", "animation") instance=ExtResource("7_dirf7")]
+player = NodePath("..")
 animation = NodePath("../Mesh/player/AnimationPlayer")
 
 [editable path="Mesh/player"]

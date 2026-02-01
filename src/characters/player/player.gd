@@ -13,6 +13,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_mask"):
 		is_mask_on = not is_mask_on
+		if is_mask_on:
+			EventBus.mask_on.emit()
+		else:
+			EventBus.mask_off.emit()
 		print("is mask on:", is_mask_on)
 
 func _physics_process(delta: float) -> void:

@@ -1,5 +1,5 @@
 class_name Shelf
-extends MeshInstance3D
+extends Node3D
 
 enum Item {
 	TOILET_PAPER,

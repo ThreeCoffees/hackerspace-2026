@@ -22,4 +22,3 @@ func _on_level_completed() -> void:
 
 func _on_timer_timeout() -> void:
 	can_leave = true
-

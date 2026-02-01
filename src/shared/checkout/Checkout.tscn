@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dvfqvwpdwhw81" path="res://shared/cash/cash.tscn" id="2_88h5u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnob1"]
-size = Vector3(2.555, 1, 4.79)
+size = Vector3(2, 1, 2.25)
 
 [node name="Checkout" type="Node3D" node_paths=PackedStringArray("checkout_area", "checkout_timer") groups=["checkouts"]]
 script = ExtResource("1_2gt20")
@@ -15,7 +15,7 @@ checkout_timer = NodePath("Timer")
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073829055, 0.5, -0.032275677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.546329, 0.5, 0.94772434)
 shape = SubResource("BoxShape3D_mnob1")
 
 [node name="Timer" type="Timer" parent="."]

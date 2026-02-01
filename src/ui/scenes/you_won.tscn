@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbylb"]
 texture = ExtResource("2_5urso")
 
-[node name="YouWon" type="Control"]
+[node name="YouWon" type="Control" node_paths=PackedStringArray("timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghf8f")
+main_menu_path = "res://ui/scenes/main_menu.tscn"
+timer = NodePath("Timer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

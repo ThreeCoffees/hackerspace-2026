@@ -2,7 +2,13 @@ extends CharacterBody3D
 
 @export var is_mask_on: bool = true
 @export var infection_timer: Timer
+@export var raycast: RayCast3D
 var is_being_infected: bool = false
+
+var player: CharacterBody3D
+
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_mask"):

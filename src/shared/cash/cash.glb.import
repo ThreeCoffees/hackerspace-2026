@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://pa5dgleicpl3"
-path="res://.godot/imported/kasa.glb-b82ff4347b847420eb05419a55f26f11.scn"
+path="res://.godot/imported/cash.glb-ab62185aadb0add070f94031f028445c.scn"
 
 [deps]
 
-source_file="res://shared/kasa.glb"
-dest_files=["res://.godot/imported/kasa.glb-b82ff4347b847420eb05419a55f26f11.scn"]
+source_file="res://shared/cash/cash.glb"
+dest_files=["res://.godot/imported/cash.glb-ab62185aadb0add070f94031f028445c.scn"]
 
 [params]
 

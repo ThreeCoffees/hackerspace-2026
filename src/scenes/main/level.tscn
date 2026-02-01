@@ -31,6 +31,7 @@ transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, -4)
 
 [node name="CeilMap" type="GridMap" parent="."]
+visible = false
 mesh_library = ExtResource("7_k4mcv")
 cell_size = Vector3(2, 2.775, 2)
 cell_center_y = false

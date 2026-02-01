@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=3 uid="uid://2lqhf05tpvvh"]
+
+[ext_resource type="Script" uid="uid://dw8gi3855f2r6" path="res://ui/list/list.gd" id="1_cyegv"]
+[ext_resource type="Texture2D" uid="uid://b2onv3d68mmam" path="res://ui/list/grocery list.png" id="1_x5sj1"]
+[ext_resource type="FontFile" uid="uid://du0roh86241lh" path="res://ui/assets/CourierPrime-Regular.ttf" id="3_jpmey"]
+
+[sub_resource type="Animation" id="Animation_cyegv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x5sj1"]
+resource_name = "slide down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1.1095693, 1),
+"update": 0,
+"values": [Vector2(249.02484, 145), Vector2(249, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3333333, 0.33343333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jpmey"]
+resource_name = "slide up"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1.1095693),
+"update": 0,
+"values": [Vector2(249, 648), Vector2(249.02484, 145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333334, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tw3pn"]
+_data = {
+&"RESET": SubResource("Animation_cyegv"),
+&"slide down": SubResource("Animation_x5sj1"),
+&"slide up": SubResource("Animation_jpmey")
+}
+
+[node name="List" type="Control" node_paths=PackedStringArray("anim_player", "list_image", "text_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cyegv")
+anim_player = NodePath("AnimationPlayer")
+list_image = NodePath("TextureRect")
+text_label = NodePath("TextureRect/RichTextLabel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -711.0
+offset_top = -432.0
+offset_right = -191.0
+offset_bottom = 220.87793
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_x5sj1")
+expand_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 69.97516
+offset_top = 48.0
+offset_right = 569.97516
+offset_bottom = 508.0
+scale = Vector2(0.90000004, 0.90000004)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_jpmey")
+theme_override_font_sizes/normal_font_size = 32
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tw3pn")
+}

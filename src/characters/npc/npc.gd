@@ -74,4 +74,3 @@ func _on_vision_cone_item_visible(position: Vector3) -> void:
 		if global_position.distance_to(closest_item_position) > global_position.distance_to(behavior_tree.blackboard.get_value("item_position")):
 			closest_item_position = behavior_tree.blackboard.get_value("item_position")
 	behavior_tree.blackboard.set_value("item_position", closest_item_position)
-	print("item located at: %s" % [closest_item_position])

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bunsf2seke31h"]
+
+[ext_resource type="Script" uid="uid://bkmci4fp5bu5g" path="res://shared/items/thrown_item.gd" id="1_jvmng"]
+[ext_resource type="PackedScene" uid="uid://b70s63rfgwxsw" path="res://shared/shelf_items/puszka.glb" id="2_xoof6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulktt"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulktt"]
+albedo_color = Color(0.26666665, 1, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xoof6"]
+height = 0.34033203
+radius = 0.31298828
+
+[node name="ThrownItem" type="RigidBody3D" groups=["decoy_items"]]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_jvmng")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_ulktt")
+surface_material_override/0 = SubResource("StandardMaterial3D_ulktt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025146484, 0)
+shape = SubResource("CylinderShape3D_xoof6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="puszka" parent="." instance=ExtResource("2_xoof6")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

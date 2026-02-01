@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxm2qduvk6t40"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1kqw"]
+emission_enabled = true
+emission = Color(0.61264557, 0.5754228, 0.34579372, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_bqubr"]
+material = SubResource("StandardMaterial3D_u1kqw")
+size = Vector3(4, 0.1, 0.2)
+
+[node name="Light" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bqubr")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1528108, 0)
+light_energy = 0.2
+light_indirect_energy = 0.2
+light_specular = 1.0
+omni_range = 8.0
+omni_attenuation = 0.2

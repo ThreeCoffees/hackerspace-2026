@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://3kon6hils8a3"]
+[gd_scene load_steps=8 format=3 uid="uid://3kon6hils8a3"]
 
 [ext_resource type="Script" uid="uid://bhhs2euf4ni8e" path="res://characters/npc/npc.gd" id="1_coukx"]
 [ext_resource type="PackedScene" uid="uid://d1wvwme7n38wb" path="res://characters/player/player_model.tscn" id="2_ra4xb"]
 [ext_resource type="PackedScene" uid="uid://bwftuh2iui30a" path="res://characters/npc/beehave_tree.tscn" id="3_ismw2"]
 [ext_resource type="Script" uid="uid://v3wlh7vg7yxh" path="res://shared/decoys/vision_cone.gd" id="4_sjitq"]
 [ext_resource type="PackedScene" uid="uid://bs4temoravv8g" path="res://shared/animation/AnimationComponent.tscn" id="5_lxvj1"]
+[ext_resource type="PackedScene" uid="uid://cqw3qhsiheukw" path="res://characters/npc/range_vis.tscn" id="6_ra4xb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hiqpq"]
 radius = 0.4
 height = 1.9
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "behavior_tree") groups=["npc"]]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "behavior_tree", "range_vis") groups=["npc"]]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_coukx")
@@ -20,6 +21,7 @@ speed = 2.0
 tolerance_distance = 2.0
 tolerance_distance_masked_modifier = 1.0
 infection_radius = 6.0
+range_vis = NodePath("Node3D")
 
 [node name="Mesh" parent="." instance=ExtResource("2_ra4xb")]
 transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0.001, 0.8, -0.001)
@@ -37,13 +39,16 @@ radius = 0.6
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_ismw2")]
-blackboard = NodePath("@Node@31537")
+blackboard = NodePath("@Node@21057")
 
 [node name="VisionCone" type="Node3D" parent="."]
 script = ExtResource("4_sjitq")
 view_distance = 20.0
 
 [node name="AnimationComponent" parent="." instance=ExtResource("5_lxvj1")]
+
+[node name="Node3D" parent="." instance=ExtResource("6_ra4xb")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.20511699, 0)
 
 [connection signal="item_visible" from="VisionCone" to="." method="_on_vision_cone_item_visible"]
 

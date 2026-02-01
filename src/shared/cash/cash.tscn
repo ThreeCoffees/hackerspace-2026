@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://pa5dgleicpl3" path="res://shared/cash/cash.glb" id="1_3n3up"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jiat5"]
-size = Vector3(4.22, 1, 1.585)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n3up"]
+size = Vector3(4.175, 0.86, 1.55)
 
-[node name="Node3D" type="StaticBody3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375)
-shape = SubResource("BoxShape3D_jiat5")
+[node name="CashModel" type="StaticBody3D"]
 
 [node name="cash" parent="." instance=ExtResource("1_3n3up")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0.34153777, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454, 0.39)
+shape = SubResource("BoxShape3D_3n3up")

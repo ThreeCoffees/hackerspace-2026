@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp4kcjl6nc8uy"]
 
-[ext_resource type="PackedScene" uid="uid://bhluvyhmdu20o" path="res://shared/shelves/shelf.tscn" id="1_v7bww"]
+[ext_resource type="PackedScene" uid="uid://bhluvyhmdu20o" path="res://shared/shelves/shelf_water.tscn" id="1_v7bww"]
 
 [node name="TempMeshes" type="Node3D"]
 

@@ -1,12 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhluvyhmdu20o"]
+[gd_scene load_steps=5 format=3 uid="uid://dfh7xtwg0xs7y"]
 
-[ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_jm8ks"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_4qk54"]
-size = Vector3(2, 2, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7bww"]
-albedo_color = Color(1, 0, 0, 1)
+[ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_45as6"]
+[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/shelves/shelf.glb" id="2_31tqx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4qk54"]
 size = Vector3(2, 2, 2)
@@ -14,20 +9,23 @@ size = Vector3(2, 2, 2)
 [sub_resource type="SphereShape3D" id="SphereShape3D_jm8ks"]
 radius = 2.5
 
-[node name="Shelf1" type="MeshInstance3D" node_paths=PackedStringArray("interactable_area", "collision_shape")]
-mesh = SubResource("BoxMesh_4qk54")
-surface_material_override/0 = SubResource("StandardMaterial3D_v7bww")
-script = ExtResource("1_jm8ks")
+[node name="Shelf1" type="Node3D" node_paths=PackedStringArray("interactable_area", "collision_shape")]
+script = ExtResource("1_45as6")
 interactable_area = NodePath("Area3D")
 collision_shape = NodePath("StaticBody3D")
+item = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 collision_layer = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_4qk54")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 collision_mask = 2
 input_ray_pickable = false
 
@@ -35,6 +33,9 @@ input_ray_pickable = false
 shape = SubResource("SphereShape3D_jm8ks")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+visible = false
 height = 3.0
 vertices = PackedVector3Array(-0.98418176, 0, -1.0051656, 0.977798, 0, -0.9686378, 1.0270973, 0, 0.9713696, -1.0182222, 0, 0.9858388)
 affect_navigation_mesh = true
+
+[node name="ShelfModel" parent="." instance=ExtResource("2_31tqx")]

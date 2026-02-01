@@ -6,6 +6,7 @@
 size = Vector3(2.08, 0.915, 1.005)
 
 [node name="Freezer" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44356287, 0)
 
 [node name="FreezerModel" parent="." instance=ExtResource("1_kbjnw")]
 

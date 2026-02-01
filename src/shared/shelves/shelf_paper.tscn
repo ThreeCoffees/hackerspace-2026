@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4dsa63iddyk8"]
+
+[ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_l8hyt"]
+[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/shelves/shelf.glb" id="2_pg0i6"]
+[ext_resource type="PackedScene" uid="uid://b4gh8afh1k21" path="res://shared/shelf_items/papier_zestaw.glb" id="3_l8hyt"]
+[ext_resource type="PackedScene" uid="uid://b2bqv0k7acy1o" path="res://shared/shelf_items/rolka.glb" id="4_pg0i6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qk54"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jm8ks"]
+radius = 2.5
+
+[node name="Shelf1" type="Node3D" node_paths=PackedStringArray("interactable_area", "collision_shape")]
+script = ExtResource("1_l8hyt")
+interactable_area = NodePath("Area3D")
+collision_shape = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+collision_layer = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_4qk54")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+collision_mask = 2
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jm8ks")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+visible = false
+height = 3.0
+vertices = PackedVector3Array(-0.98418176, 0, -1.0051656, 0.977798, 0, -0.9686378, 1.0270973, 0, 0.9713696, -1.0182222, 0, 0.9858388)
+affect_navigation_mesh = true
+
+[node name="ShelfModel" parent="." instance=ExtResource("2_pg0i6")]
+
+[node name="Paper" type="Node3D" parent="."]
+
+[node name="papier_zestaw" parent="." instance=ExtResource("3_l8hyt")]
+transform = Transform3D(-0.028026469, 0, 0.09599228, 0, 0.1, 0, -0.09599228, 0, -0.028026469, 0.3831849, 0.45692676, 0.6719068)
+
+[node name="papier_zestaw2" parent="." instance=ExtResource("3_l8hyt")]
+transform = Transform3D(0.016396297, 0, 0.098646656, 0, 0.1, 0, -0.098646656, 0, 0.016396297, -0.09760314, 0.9302623, 0.43624467)
+
+[node name="papier_zestaw3" parent="." instance=ExtResource("3_l8hyt")]
+transform = Transform3D(0.0049738744, 0, 0.099876225, 0, 0.10000002, 0, -0.099876225, 0, 0.0049738744, -0.2000874, 1.8859303, 0.31409252)
+
+[node name="papier_zestaw4" parent="." instance=ExtResource("3_l8hyt")]
+transform = Transform3D(-0.010990783, 0, 0.09939416, 0, 0.099999994, 0, -0.09939416, 0, -0.010990783, -0.2000874, 2.1005208, 0.3244112)
+
+[node name="rolka" parent="." instance=ExtResource("4_pg0i6")]
+transform = Transform3D(-5.4426106e-05, -0.08716332, 0.049015813, 0.09999992, 1.3499242e-06, 0.00011343827, -9.953829e-05, 0.049015846, 0.08716328, 0.19730496, 1.3785855, 0.66032267)
+
+[node name="rolka2" parent="." instance=ExtResource("4_pg0i6")]
+transform = Transform3D(0.09999992, 1.3543048e-06, 0.00011343842, -2.6391263e-06, 0.09999357, 0.001132697, -0.00011341575, -0.0011326934, 0.09999353, 0.37117508, 1.3495352, 0.6196612)
+
+[node name="rolka3" parent="." instance=ExtResource("4_pg0i6")]
+transform = Transform3D(0.09999992, 1.3543048e-06, 0.00011343842, -2.6391263e-06, 0.09999357, 0.001132697, -0.00011341575, -0.0011326934, 0.09999353, -0.5517341, 0.37876093, 0.29642886)

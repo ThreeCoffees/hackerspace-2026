@@ -1,39 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://do4sbvw4qreyk"]
+[gd_scene load_steps=4 format=3 uid="uid://do4sbvw4qreyk"]
 
 [ext_resource type="Script" uid="uid://c7lcrqvyk1eek" path="res://shared/checkout/checkout.gd" id="1_2gt20"]
+[ext_resource type="PackedScene" uid="uid://dvfqvwpdwhw81" path="res://shared/cash/cash.tscn" id="2_88h5u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnob1"]
-size = Vector3(2, 1, 1.5)
+size = Vector3(2.555, 1, 4.79)
 
 [node name="Checkout" type="Node3D" node_paths=PackedStringArray("checkout_area", "checkout_timer") groups=["checkouts"]]
 script = ExtResource("1_2gt20")
 checkout_area = NodePath("Area3D")
 checkout_timer = NodePath("Timer")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
-size = Vector3(1, 1, 2.5)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0)
-size = Vector3(0.5, 1, 1)
-
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073829055, 0.5, -0.032275677)
 shape = SubResource("BoxShape3D_mnob1")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1.4350473, 0, 0, 0, 1, 0, 0, 0, 1.62987, -0.03600931, 0, -1.3031671)
 vertices = PackedVector3Array(-0.5805845, 0, -0.5460993, -0.6105423, 0, 2.0843713, 0.06785238, 0, 2.0801146, 0.08679861, 0, -0.55208874)
 affect_navigation_mesh = true
+
+[node name="CashModel" parent="." instance=ExtResource("2_88h5u")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.27418828, 0, 0.087991774)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

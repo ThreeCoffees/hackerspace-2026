@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdo66pg287p2q"
-path="res://.godot/imported/shelf.glb-108defe7d4dcb75dea3b7c0d48d3946d.scn"
+path="res://.godot/imported/shelf.glb-c6eaf4df07e1690c1ebcd42f6315c5e7.scn"
 
 [deps]
 
-source_file="res://shared/shelf/shelf.glb"
-dest_files=["res://.godot/imported/shelf.glb-108defe7d4dcb75dea3b7c0d48d3946d.scn"]
+source_file="res://shared/shelves/shelf.glb"
+dest_files=["res://.godot/imported/shelf.glb-c6eaf4df07e1690c1ebcd42f6315c5e7.scn"]
 
 [params]
 

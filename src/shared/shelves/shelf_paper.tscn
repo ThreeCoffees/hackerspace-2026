@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b4dsa63iddyk8"]
 
 [ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_l8hyt"]
-[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/shelves/shelf.glb" id="2_pg0i6"]
+[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/assets/shelf/shelf.glb" id="2_pg0i6"]
 [ext_resource type="PackedScene" uid="uid://b4gh8afh1k21" path="res://shared/shelf_items/papier_zestaw.glb" id="3_l8hyt"]
 [ext_resource type="PackedScene" uid="uid://b2bqv0k7acy1o" path="res://shared/shelf_items/rolka.glb" id="4_pg0i6"]
 
@@ -15,6 +15,7 @@ radius = 2.5
 script = ExtResource("1_l8hyt")
 interactable_area = NodePath("Area3D")
 collision_shape = NodePath("StaticBody3D")
+count = 5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

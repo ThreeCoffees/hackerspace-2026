@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dd8sxlyomamc0"
-path="res://.godot/imported/shelf.glb-c6eaf4df07e1690c1ebcd42f6315c5e7.scn"
+uid="uid://b2bqv0k7acy1o"
+path="res://.godot/imported/rolka.glb-2d48125fda368250a3e28f5897a3b05f.scn"
 
 [deps]
 
-source_file="res://shared/shelves/shelf.glb"
-dest_files=["res://.godot/imported/shelf.glb-c6eaf4df07e1690c1ebcd42f6315c5e7.scn"]
+source_file="res://shared/assets/shelf_items/rolka.glb"
+dest_files=["res://.godot/imported/rolka.glb-2d48125fda368250a3e28f5897a3b05f.scn"]
 
 [params]
 

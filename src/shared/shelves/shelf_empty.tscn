@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfh7xtwg0xs7y"]
 
 [ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_45as6"]
-[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/shelves/shelf.glb" id="2_31tqx"]
+[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/assets/shelf/shelf.glb" id="2_31tqx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4qk54"]
 size = Vector3(2, 2, 2)

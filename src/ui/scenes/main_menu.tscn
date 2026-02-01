@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://c64pel6g4iud4"]
+
+[ext_resource type="Script" uid="uid://bmn7kuifu8mbg" path="res://ui/scenes/main_menu.gd" id="1_tc7ta"]
+[ext_resource type="Texture2D" uid="uid://dimmlkqbk1t3t" path="res://ui/assets/main_menu_bg.png" id="1_tfcyl"]
+[ext_resource type="Texture2D" uid="uid://br1mvbfufr1tf" path="res://ui/assets/start_btn_normal.png" id="2_h3oyo"]
+[ext_resource type="Texture2D" uid="uid://3munu33r77ri" path="res://ui/assets/options_btn_normal.png" id="3_h3oyo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvlg3"]
+texture = ExtResource("1_tfcyl")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tc7ta")
+level_path = "res://scenes/debug/store_gridmap_test.tscn"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pvlg3")
+
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 670.0
+offset_right = 1588.0
+offset_bottom = 771.0
+texture_normal = ExtResource("2_h3oyo")
+texture_pressed = ExtResource("2_h3oyo")
+texture_hover = ExtResource("2_h3oyo")
+texture_disabled = ExtResource("2_h3oyo")
+texture_focused = ExtResource("2_h3oyo")
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 712.0
+offset_top = 772.0
+offset_right = 1588.0
+offset_bottom = 873.0
+texture_normal = ExtResource("3_h3oyo")
+texture_pressed = ExtResource("3_h3oyo")
+texture_hover = ExtResource("3_h3oyo")
+texture_disabled = ExtResource("3_h3oyo")
+texture_focused = ExtResource("3_h3oyo")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

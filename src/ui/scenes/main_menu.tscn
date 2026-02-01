@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64pel6g4iud4"]
+[gd_scene load_steps=6 format=3 uid="uid://c64pel6g4iud4"]
 
+[ext_resource type="Script" uid="uid://bmn7kuifu8mbg" path="res://ui/scenes/main_menu.gd" id="1_tc7ta"]
 [ext_resource type="Texture2D" uid="uid://dimmlkqbk1t3t" path="res://ui/assets/main_menu_bg.png" id="1_tfcyl"]
 [ext_resource type="Texture2D" uid="uid://br1mvbfufr1tf" path="res://ui/assets/start_btn_normal.png" id="2_h3oyo"]
 [ext_resource type="Texture2D" uid="uid://3munu33r77ri" path="res://ui/assets/options_btn_normal.png" id="3_h3oyo"]
@@ -14,6 +15,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tc7ta")
+level_path = "res://scenes/debug/store_gridmap_test.tscn"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -47,3 +50,6 @@ texture_pressed = ExtResource("3_h3oyo")
 texture_hover = ExtResource("3_h3oyo")
 texture_disabled = ExtResource("3_h3oyo")
 texture_focused = ExtResource("3_h3oyo")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

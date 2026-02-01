@@ -52,7 +52,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("2_7o1fx")]
-blackboard = NodePath("@Node@140209")
+blackboard = NodePath("@Node@37751")
 
 [node name="VisionCone" type="Node3D" parent="."]
 script = ExtResource("3_6oo8j")

@@ -2,12 +2,13 @@ class_name NPC
 extends CharacterBody3D
 
 @export var nav_agent: NavigationAgent3D
+@export var behavior_tree: BeehaveTree
 @export var speed: float = 3.0
 @export var item_speed_modifier: float = 2.0
 @export var tolerance_distance: float = 30.0
 @export var tolerance_distance_masked_modifier: float = 0.5 
 @export var run_away_distance: float = 10.0
-@export var behavior_tree: BeehaveTree
+@export var infection_radius: float = 10.0
 
 var nav_region: NavigationRegion3D
 
@@ -28,6 +29,11 @@ func _physics_process(_delta: float) -> void:
 	dir.y = 0
 	rotation.y = 3 * PI / 2 + atan2(velocity.x, velocity.z)
 
+	var player = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	if player:
+		var distance = global_position.distance_to(player.global_position)
+		if distance < infection_radius:
+			player.is_being_infected = true
 
 func _on_velocity_computed(safe_vel: Vector3) -> void:
 	velocity = velocity.move_toward(safe_vel, 100)

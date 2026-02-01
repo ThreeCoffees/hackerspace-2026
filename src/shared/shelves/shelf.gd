@@ -9,20 +9,17 @@ enum Item {
 }
 
 @export var interactable_area: Area3D
+@export var collision_shape: StaticBody3D
 @export var item: Item
 @export var count: int
 
 var is_picked: bool = false
+var player: CharacterBody3D
 
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
 
 func _input(event: InputEvent) -> void:
+	is_picked = (player.raycast as RayCast3D).get_collider() == collision_shape
 	if is_picked and event.is_action_pressed("interact_primary"):
 		EventBus.interacted_with_shelf.emit(self)
-
-
-func _on_static_body_3d_mouse_exited() -> void:
-	is_picked = false
-
-
-func _on_static_body_3d_mouse_entered() -> void:
-	is_picked = true

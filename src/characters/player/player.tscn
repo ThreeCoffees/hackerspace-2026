@@ -10,9 +10,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("infection_timer", "raycast") groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_ixbpm")
+infection_timer = NodePath("InfectionTimer")
+raycast = NodePath("FpsMovement/CameraMount/RayCast3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
@@ -77,10 +79,21 @@ animation = NodePath("../Mesh/player/AnimationPlayer")
 
 [node name="FpsMovement" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("8_idpv6")]
 player = NodePath("..")
+speed = 10.0
 camera = NodePath("../Camera3D")
 
 [node name="CameraMount" parent="FpsMovement" index="0"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.5, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="FpsMovement/CameraMount" index="0"]
+target_position = Vector3(0, 0, -10)
+collision_mask = 32
+
+[node name="InfectionTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="InfectionTimer" to="." method="_on_infection_timer_timeout"]
 
 [editable path="Mesh/player"]
 [editable path="FpsMovement"]

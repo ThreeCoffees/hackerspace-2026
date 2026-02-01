@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://21jgufvnqthl"]
+[gd_scene load_steps=11 format=3 uid="uid://21jgufvnqthl"]
 
 [ext_resource type="Script" uid="uid://b0xbwpjtcwaee" path="res://characters/player/player.gd" id="1_ixbpm"]
 [ext_resource type="PackedScene" uid="uid://dv6545dytnc61" path="res://shared/inventory/inventory_manager.tscn" id="1_jpmhp"]
 [ext_resource type="PackedScene" uid="uid://d1wvwme7n38wb" path="res://characters/player/player_model.tscn" id="2_c6leb"]
-[ext_resource type="PackedScene" uid="uid://c2jmfc12quyc6" path="res://characters/player/masked_camera.tscn" id="2_idpv6"]
+[ext_resource type="PackedScene" uid="uid://2lqhf05tpvvh" path="res://ui/list/list.tscn" id="2_idpv6"]
+[ext_resource type="PackedScene" uid="uid://c2jmfc12quyc6" path="res://characters/player/masked_camera.tscn" id="2_idpv7"]
 [ext_resource type="PackedScene" uid="uid://bu5ktsrrhx1m0" path="res://shared/items/item_thrower.tscn" id="2_qlt8v"]
 [ext_resource type="Script" uid="uid://c00oi0hjb8n2a" path="res://shared/shopping_list/shopping_list.gd" id="4_tjvp7"]
 [ext_resource type="PackedScene" uid="uid://bs4temoravv8g" path="res://shared/animation/AnimationComponent.tscn" id="7_dirf7"]
@@ -18,8 +19,10 @@ infection_timer = NodePath("InfectionTimer")
 infection_timer_unmasked = NodePath("InfectionTimerUnmasked")
 raycast = NodePath("FpsMovement/CameraMount/RayCast3D")
 
-[node name="Camera3D" parent="." instance=ExtResource("2_idpv6")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.5, 0)
+[node name="List" parent="." node_paths=PackedStringArray("inventory_manager") instance=ExtResource("2_idpv6")]
+inventory_manager = NodePath("../InventoryManager")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_idpv7")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -6,9 +6,9 @@ extends Control
 @export var inventory_manager: Node
 
 var item_string: Dictionary[Shelf.Item, String] = {
-	Shelf.Item.TOILET_PAPER : "TOILET_PAPER",
+	Shelf.Item.TOILET_PAPER : "TOILET PAPER",
 	Shelf.Item.WATER : "WATER",
-	Shelf.Item.CAN_OF_TUNA : "CAN_OF_TUNA",
+	Shelf.Item.CAN_OF_TUNA : "CAN OF TUNA",
 	Shelf.Item.NONE : "NONE"
 }
 

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1m1860b1025h"]
+[gd_scene load_steps=8 format=3 uid="uid://2m8b7vss43ue"]
 
 [ext_resource type="PackedScene" uid="uid://21jgufvnqthl" path="res://characters/player/player.tscn" id="1_oj76q"]
-[ext_resource type="PackedScene" uid="uid://bhluvyhmdu20o" path="res://shared/shelves/shelf.tscn" id="2_kg00c"]
+[ext_resource type="PackedScene" uid="uid://bhluvyhmdu20o" path="res://shared/shelves/shelf_water.tscn" id="2_kg00c"]
 [ext_resource type="PackedScene" uid="uid://do4sbvw4qreyk" path="res://shared/checkout/Checkout.tscn" id="3_l3vfd"]
 [ext_resource type="PackedScene" uid="uid://bmjm76dt4465y" path="res://shared/level/level_finish_area.tscn" id="4_kg00c"]
+[ext_resource type="PackedScene" uid="uid://dfh7xtwg0xs7y" path="res://shared/shelves/shelf_empty.tscn" id="5_gce7m"]
+[ext_resource type="PackedScene" uid="uid://b4dsa63iddyk8" path="res://shared/shelves/shelf_paper.tscn" id="6_jxq8i"]
+[ext_resource type="PackedScene" uid="uid://clb1cjapgk027" path="res://shared/shelves/shelf_can.tscn" id="7_jvqpx"]
 
 [node name="Level" type="Node3D"]
 
@@ -26,13 +29,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
 count = 5
 
 [node name="Shelf2" parent="Shelves" instance=ExtResource("2_kg00c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 4.5)
-item = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.914131, 0, 4.5791006)
 count = 5
 
 [node name="Shelf3" parent="Shelves" instance=ExtResource("2_kg00c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
-skeleton = NodePath("../Shelf2")
 item = 2
 count = 5
 
@@ -41,3 +42,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
 [node name="LevelFinishArea" parent="." instance=ExtResource("4_kg00c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -8)
+
+[node name="ShelfEmpty" parent="." instance=ExtResource("5_gce7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11999, 5.0477684e-06, 3.6373627)
+
+[node name="ShelfPaper" parent="." instance=ExtResource("6_jxq8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2479365, 4.570931e-06, 4.5785875)
+
+[node name="ShelfCan" parent="." instance=ExtResource("7_jvqpx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36044788, 4.570931e-06, 4.5678353)

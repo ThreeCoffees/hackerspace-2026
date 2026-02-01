@@ -5,6 +5,7 @@ enum Item {
 	TOILET_PAPER,
 	WATER,
 	PASTA,
+	CAN_OF_TUNA,
 	NONE,
 }
 

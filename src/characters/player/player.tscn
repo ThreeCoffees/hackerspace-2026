@@ -54,6 +54,9 @@ bones/18/rotation = Quaternion(0.007343052, 0.8053275, 0.57307744, -0.15157811)
 [node name="Cube" parent="Mesh/player/Armature/Skeleton3D" index="0"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
+[node name="Mask" parent="Mesh/player/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
 [node name="ThrownItemSpawn" type="Node3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 

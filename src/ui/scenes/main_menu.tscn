@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bmn7kuifu8mbg" path="res://ui/scenes/main_menu.gd" id="1_tc7ta"]
 [ext_resource type="Texture2D" uid="uid://dimmlkqbk1t3t" path="res://ui/assets/main_menu_bg.png" id="1_tfcyl"]
 [ext_resource type="Texture2D" uid="uid://br1mvbfufr1tf" path="res://ui/assets/start_btn_normal.png" id="2_h3oyo"]
-[ext_resource type="Texture2D" uid="uid://3munu33r77ri" path="res://ui/assets/options_btn_normal.png" id="3_h3oyo"]
+[ext_resource type="Texture2D" uid="uid://g7dnnmnm2t22" path="res://ui/assets/exit_btn.png" id="4_tc7ta"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvlg3"]
 texture = ExtResource("1_tfcyl")
@@ -40,17 +40,16 @@ texture_disabled = ExtResource("2_h3oyo")
 texture_focused = ExtResource("2_h3oyo")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 712.0
 offset_top = 772.0
 offset_right = 1588.0
 offset_bottom = 873.0
-texture_normal = ExtResource("3_h3oyo")
-texture_pressed = ExtResource("3_h3oyo")
-texture_hover = ExtResource("3_h3oyo")
-texture_disabled = ExtResource("3_h3oyo")
-texture_focused = ExtResource("3_h3oyo")
+texture_normal = ExtResource("4_tc7ta")
+texture_pressed = ExtResource("4_tc7ta")
+texture_hover = ExtResource("4_tc7ta")
+texture_disabled = ExtResource("4_tc7ta")
+texture_focused = ExtResource("4_tc7ta")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

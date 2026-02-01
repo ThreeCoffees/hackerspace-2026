@@ -31,6 +31,14 @@ window/size/resizable=false
 
 enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://autoload/": "teal",
+"res://characters/": "red",
+"res://scenes/": "yellow"
+}
+
 [global_group]
 
 player=""

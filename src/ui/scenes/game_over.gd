@@ -8,6 +8,9 @@ func _ready() -> void:
 	EventBus.game_over.connect(_on_game_over)
 
 func _input(event: InputEvent) -> void:
+	if visible == false and event.is_action_pressed("ui_cancel"):
+		visible = true
+		timer.start()
 	if visible == false or not can_leave: 
 		return
 

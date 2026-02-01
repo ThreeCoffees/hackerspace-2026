@@ -35,8 +35,6 @@ navigation_mesh = SubResource("NavigationMesh_ixnwg")
 
 [node name="ShelfCan" parent="NavigationRegion3D/Shelves" instance=ExtResource("3_seb8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-item = 2
-count = 4
 
 [node name="Shelf4" parent="NavigationRegion3D/Shelves" instance=ExtResource("4_lmd8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015113831, 0.05000524, 5.0420427)

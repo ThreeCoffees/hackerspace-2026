@@ -19,6 +19,7 @@ script = ExtResource("1_um5dd")
 shape = SubResource("BoxShape3D_611pf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_611pf")
 surface_material_override/0 = SubResource("StandardMaterial3D_um5dd")
 

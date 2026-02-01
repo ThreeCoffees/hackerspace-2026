@@ -1,48 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://b25ciyddvh80l"]
+[gd_scene load_steps=7 format=3 uid="uid://b25ciyddvh80l"]
 
 [ext_resource type="Script" uid="uid://bhhs2euf4ni8e" path="res://characters/npc/npc.gd" id="1_hiqpq"]
 [ext_resource type="PackedScene" uid="uid://bwftuh2iui30a" path="res://characters/npc/beehave_tree.tscn" id="2_7o1fx"]
+[ext_resource type="PackedScene" uid="uid://d1wvwme7n38wb" path="res://characters/player/player_model.tscn" id="2_71267"]
 [ext_resource type="Script" uid="uid://v3wlh7vg7yxh" path="res://shared/decoys/vision_cone.gd" id="3_6oo8j"]
+[ext_resource type="PackedScene" uid="uid://bs4temoravv8g" path="res://shared/animation/AnimationComponent.tscn" id="4_054gq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hiqpq"]
 radius = 0.4
 height = 1.9
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8ux74"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jws3k"]
-albedo_color = Color(0, 0.4666667, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_w7b20"]
-size = Vector3(0.5, 0.5, 0.5)
 
 [node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "behavior_tree") groups=["npc"]]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_hiqpq")
 nav_agent = NodePath("NavigationAgent3D")
+behavior_tree = NodePath("BeehaveTree")
 speed = 2.0
 tolerance_distance = 5.0
 run_away_distance = 15.0
-behavior_tree = NodePath("BeehaveTree")
+
+[node name="Mesh" parent="." instance=ExtResource("2_71267")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0.001, 0.8, -0.001)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_hiqpq")
-
-[node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_8ux74")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_jws3k")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
-mesh = SubResource("BoxMesh_w7b20")
-skeleton = NodePath("../..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -52,10 +35,12 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("2_7o1fx")]
-blackboard = NodePath("@Node@37751")
+blackboard = NodePath("@Node@55649")
 
 [node name="VisionCone" type="Node3D" parent="."]
 script = ExtResource("3_6oo8j")
 view_distance = 20.0
+
+[node name="AnimationComponent" parent="." instance=ExtResource("4_054gq")]
 
 [connection signal="item_visible" from="VisionCone" to="." method="_on_vision_cone_item_visible"]

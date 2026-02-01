@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://k4evjcbf776j" path="res://ui/scenes/you_won.gd" id="1_ghf8f"]
 [ext_resource type="Texture2D" uid="uid://durxujdof4ldp" path="res://ui/assets/level_completed_temp.png" id="2_5urso"]
 [ext_resource type="FontFile" uid="uid://du0roh86241lh" path="res://ui/assets/CourierPrime-Regular.ttf" id="3_5urso"]
+[ext_resource type="AudioStream" uid="uid://ct0i5yrme03ij" path="res://ui/scenes/win.ogg" id="3_5urso"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbylb"]
 texture = ExtResource("2_5urso")
 
-[node name="YouWon" type="Control" node_paths=PackedStringArray("timer", "time_label")]
+[node name="YouWon" type="Control" node_paths=PackedStringArray("timer", "time_label", "audio")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +19,7 @@ script = ExtResource("1_ghf8f")
 main_menu_path = "res://ui/scenes/main_menu.tscn"
 timer = NodePath("Timer")
 time_label = NodePath("Label")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -41,5 +43,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5urso")
 theme_override_font_sizes/font_size = 60
 text = "Time: 2137"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5urso")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

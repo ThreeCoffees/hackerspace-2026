@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 func _on_game_over() -> void:
 	visible = true
 	timer.start()
+	get_tree().paused = true
 
 
 func _on_timer_timeout() -> void:

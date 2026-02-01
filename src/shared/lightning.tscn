@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccs1qbd2n3upq"]
+
+[ext_resource type="PackedScene" path="res://shared/assets/light/light.tscn" id="1_7dm51"]
+
+[node name="Lightning" type="Node3D"]
+
+[node name="Light" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.40228987, 2.7242248, -0.17663908)
+
+[node name="Light2" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.40228987, 2.7242248, 4.823361)
+
+[node name="Light13" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.189128, 2.7242248, 4.996145)
+
+[node name="Light16" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3314934, 2.7242248, -2.0455847)
+
+[node name="Light14" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.189128, 2.7242248, 9.005644)
+
+[node name="Light15" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.189128, 2.7242248, 12.954463)
+
+[node name="Light3" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.40228987, 2.7242248, 9.82336)
+
+[node name="Light4" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.40229, 2.7242248, -0.17663908)
+
+[node name="Light5" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.40229, 2.7242248, 4.823361)
+
+[node name="Light6" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.40229, 2.7242248, 9.82336)
+
+[node name="Light7" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.40229, 2.7242248, 11.029284)
+
+[node name="Light8" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.40229, 2.7242248, 7.039424)
+
+[node name="Light9" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.343351, 2.7242248, 11.029284)
+
+[node name="Light10" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.343351, 2.7242248, 7.039424)
+
+[node name="Light11" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 23.059637, 2.7242248, 11.029284)
+
+[node name="Light12" parent="." instance=ExtResource("1_7dm51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 23.059637, 2.7242248, 7.039424)

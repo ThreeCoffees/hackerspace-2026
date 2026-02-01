@@ -10,6 +10,7 @@ func _ready() -> void:
 	EventBus.level_completed.connect(_on_level_completed)
 
 func _input(event: InputEvent) -> void:
+	can_leave = true
 	if visible == false or not can_leave: 
 		return
 

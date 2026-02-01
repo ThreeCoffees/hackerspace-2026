@@ -10,3 +10,6 @@ signal shopping_list_fulfilled
 
 signal level_completed
 signal game_over
+
+signal mask_off
+signal mask_on

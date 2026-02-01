@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://8o4xapq2qkin"]
+[gd_scene load_steps=5 format=3 uid="uid://8o4xapq2qkin"]
 
 [ext_resource type="Script" uid="uid://k4evjcbf776j" path="res://ui/scenes/you_won.gd" id="1_ghf8f"]
 [ext_resource type="Texture2D" uid="uid://durxujdof4ldp" path="res://ui/assets/level_completed_temp.png" id="2_5urso"]
+[ext_resource type="AudioStream" uid="uid://ct0i5yrme03ij" path="res://ui/scenes/win.ogg" id="3_5urso"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbylb"]
 texture = ExtResource("2_5urso")
@@ -28,5 +29,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_kbylb")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5urso")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

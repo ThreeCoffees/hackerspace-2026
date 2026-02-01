@@ -10,7 +10,6 @@ func _ready() -> void:
 	EventBus.level_completed.connect(_on_level_completed)
 
 func _input(event: InputEvent) -> void:
-	can_leave = true
 	if visible == false or not can_leave: 
 		return
 
@@ -23,7 +22,7 @@ func _on_level_completed(time: float) -> void:
 	time_label.text = "Time: %s" %[round(time *100)/100]
 	audio.play()
 	timer.start()
-	get_tree().paused = true
+	Engine.time_scale = 0.0
 
 
 func _on_timer_timeout(time: float) -> void:

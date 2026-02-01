@@ -26,11 +26,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_pvlg3")
 
 [node name="StartButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 450.0
-offset_top = 401.0
-offset_right = 1326.0
-offset_bottom = 502.0
-scale = Vector2(0.52, 0.52)
+offset_left = 712.0
+offset_top = 670.0
+offset_right = 1588.0
+offset_bottom = 771.0
 texture_normal = ExtResource("2_h3oyo")
 texture_pressed = ExtResource("2_h3oyo")
 texture_hover = ExtResource("2_h3oyo")
@@ -39,11 +38,10 @@ texture_focused = ExtResource("2_h3oyo")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 450.0
-offset_top = 468.99997
-offset_right = 1326.0
-offset_bottom = 570.0
-scale = Vector2(0.52, 0.52)
+offset_left = 712.0
+offset_top = 772.0
+offset_right = 1588.0
+offset_bottom = 873.0
 texture_normal = ExtResource("3_h3oyo")
 texture_pressed = ExtResource("3_h3oyo")
 texture_hover = ExtResource("3_h3oyo")

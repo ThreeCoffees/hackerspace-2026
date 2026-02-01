@@ -72,7 +72,7 @@ script = ExtResource("4_tjvp7")
 list_generation_weights = Dictionary[int, int]({
 0: 4,
 1: 2,
-3: 3
+2: 2
 })
 list_generation_count = 5
 

@@ -35,6 +35,7 @@ navigation_mesh = SubResource("NavigationMesh_ixnwg")
 
 [node name="ShelfCan" parent="NavigationRegion3D/Shelves" instance=ExtResource("3_seb8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+item = 2
 count = 4
 
 [node name="Shelf4" parent="NavigationRegion3D/Shelves" instance=ExtResource("4_lmd8h")]
@@ -47,7 +48,6 @@ count = 10
 
 [node name="Shelf5" parent="NavigationRegion3D/Shelves" instance=ExtResource("6_c0xb2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7536638, 0.05000524, 0.98706436)
-item = 4
 
 [node name="Gridmaps" type="Node3D" parent="NavigationRegion3D"]
 

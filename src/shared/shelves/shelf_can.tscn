@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://clb1cjapgk027"]
 
 [ext_resource type="Script" uid="uid://bm6oarn0b1xtf" path="res://shared/shelves/shelf.gd" id="1_dwi3v"]
-[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/shelves/shelf.glb" id="2_idqoq"]
+[ext_resource type="PackedScene" uid="uid://cdo66pg287p2q" path="res://shared/assets/shelf/shelf.glb" id="2_idqoq"]
 [ext_resource type="PackedScene" uid="uid://b70s63rfgwxsw" path="res://shared/shelf_items/puszka.glb" id="3_idqoq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4qk54"]
@@ -262,7 +262,8 @@ shadow_mesh = SubResource("ArrayMesh_4i7ob")
 script = ExtResource("1_dwi3v")
 interactable_area = NodePath("Area3D")
 collision_shape = NodePath("StaticBody3D")
-item = 3
+item = 2
+count = 4
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

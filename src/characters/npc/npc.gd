@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var tolerance_distance_masked_modifier: float = 0.5 
 @export var run_away_distance: float = 10.0
 @export var infection_radius: float = 10.0
+@export var range_vis: Sprite3D
 
 var nav_region: NavigationRegion3D
 
@@ -18,6 +19,7 @@ func _ready() -> void:
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 
 	behavior_tree.blackboard.set_value("player", get_tree().get_first_node_in_group("player"))
+	range_vis.scale = Vector3(1,1,1) * infection_radius * 2
 
 
 func _physics_process(_delta: float) -> void:
@@ -74,4 +76,3 @@ func _on_vision_cone_item_visible(position: Vector3) -> void:
 		if global_position.distance_to(closest_item_position) > global_position.distance_to(behavior_tree.blackboard.get_value("item_position")):
 			closest_item_position = behavior_tree.blackboard.get_value("item_position")
 	behavior_tree.blackboard.set_value("item_position", closest_item_position)
-	print("item located at: %s" % [closest_item_position])

@@ -8,7 +8,7 @@ signal checked_out
 
 signal shopping_list_fulfilled
 
-signal level_completed
+signal level_completed(time: float)
 signal game_over
 
 signal mask_off

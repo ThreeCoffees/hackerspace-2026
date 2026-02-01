@@ -1,12 +1,14 @@
 extends Node3D
 
 enum NpcType{
-	MASKED
+	MASKED,
+	UNMASKED,
 }
 
 @export var spawn_weights: Dictionary[NpcType, int]
 @export var spawn_timer: Timer
 @export var masked_npc: PackedScene
+@export var unmasked_npc: PackedScene
 
 var weighted_array
 
@@ -22,6 +24,8 @@ func spawn_customer() -> void:
 	match customer:
 		NpcType.MASKED: 
 			instance = masked_npc.instantiate()
+		NpcType.UNMASKED: 
+			instance = unmasked_npc.instantiate()
 	add_child(instance)
 	instance.global_position = global_position
 

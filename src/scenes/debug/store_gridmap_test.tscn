@@ -77,3 +77,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.460136, 0.54999924, 3.4373
 
 [node name="GameOver" parent="." instance=ExtResource("7_imxur")]
 visible = false
+main_menu_path = "res://ui/scenes/main_menu.tscn"

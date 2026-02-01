@@ -1,7 +1,10 @@
 extends Control
 
 @export_file_path() var level_path: String
+var can_leave = false
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_options_button_pressed() -> void:
 	pass

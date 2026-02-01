@@ -40,6 +40,7 @@ texture_disabled = ExtResource("2_h3oyo")
 texture_focused = ExtResource("2_h3oyo")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 712.0
 offset_top = 772.0

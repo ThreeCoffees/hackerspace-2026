@@ -1,7 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://2lqhf05tpvvh"]
+[gd_scene load_steps=8 format=3 uid="uid://2lqhf05tpvvh"]
 
 [ext_resource type="Script" uid="uid://dw8gi3855f2r6" path="res://ui/list/list.gd" id="1_cyegv"]
 [ext_resource type="Texture2D" uid="uid://b2onv3d68mmam" path="res://ui/list/grocery list.png" id="1_x5sj1"]
+[ext_resource type="FontFile" uid="uid://du0roh86241lh" path="res://ui/assets/CourierPrime-Regular.ttf" id="3_jpmey"]
+
+[sub_resource type="Animation" id="Animation_cyegv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_x5sj1"]
 resource_name = "slide down"
@@ -29,33 +57,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_cyegv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(249.02484, 145)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jpmey"]
@@ -106,11 +107,12 @@ list_image = NodePath("TextureRect")
 text_label = NodePath("TextureRect/RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 249.02484
-offset_top = 145.0
-offset_right = 901.90265
-offset_bottom = 646.99817
+offset_left = 249.0
+offset_top = 648.0
+offset_right = 901.8778
+offset_bottom = 1149.9982
 texture = ExtResource("1_x5sj1")
 expand_mode = 3
 
@@ -122,6 +124,7 @@ offset_right = 569.97516
 offset_bottom = 508.0
 scale = Vector2(0.90000004, 0.90000004)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_jpmey")
 scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

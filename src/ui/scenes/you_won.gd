@@ -2,6 +2,7 @@ extends Control
 
 @export_file_path var main_menu_path: String
 @export var timer: Timer
+@export var audio: AudioStreamPlayer
 var can_leave = false
 
 func _ready() -> void:
@@ -17,6 +18,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_level_completed() -> void:
 	visible = true
+	audio.play()
 	timer.start()
 
 

@@ -19,7 +19,7 @@ func _ready() -> void:
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 
 	behavior_tree.blackboard.set_value("player", get_tree().get_first_node_in_group("player"))
-	range_vis.scale = Vector3(1,1,1) * infection_radius
+	range_vis.scale = Vector3(1,1,1) * infection_radius * 2
 
 
 func _physics_process(_delta: float) -> void:

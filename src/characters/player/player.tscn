@@ -47,7 +47,7 @@ list_generation_weights = Dictionary[int, int]({
 1: 2,
 2: 2
 })
-list_generation_count = 5
+list_generation_count = 10
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_dirf7")]
 player = NodePath("..")

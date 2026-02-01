@@ -19,6 +19,7 @@ behavior_tree = NodePath("BeehaveTree")
 speed = 2.0
 tolerance_distance = 5.0
 run_away_distance = 15.0
+infection_radius = 5.0
 
 [node name="Mesh" parent="." instance=ExtResource("2_71267")]
 transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0.001, 0.8, -0.001)
@@ -35,7 +36,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("2_7o1fx")]
-blackboard = NodePath("@Node@55649")
+blackboard = NodePath("@Node@21659")
 
 [node name="VisionCone" type="Node3D" parent="."]
 script = ExtResource("3_6oo8j")

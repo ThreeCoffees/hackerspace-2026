@@ -11,10 +11,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ux74"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("infection_timer", "raycast") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("infection_timer", "infection_timer_unmasked", "raycast") groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_ixbpm")
 infection_timer = NodePath("InfectionTimer")
+infection_timer_unmasked = NodePath("InfectionTimerUnmasked")
 raycast = NodePath("FpsMovement/CameraMount/RayCast3D")
 
 [node name="Camera3D" parent="." instance=ExtResource("2_idpv6")]
@@ -48,9 +49,8 @@ list_generation_weights = Dictionary[int, int]({
 })
 list_generation_count = 5
 
-[node name="AnimationComponent" parent="." node_paths=PackedStringArray("player", "animation") instance=ExtResource("7_dirf7")]
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_dirf7")]
 player = NodePath("..")
-animation = NodePath("")
 
 [node name="FpsMovement" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("8_idpv6")]
 player = NodePath("..")
@@ -68,6 +68,11 @@ collision_mask = 32
 wait_time = 5.0
 one_shot = true
 
+[node name="InfectionTimerUnmasked" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="InfectionTimer" to="." method="_on_infection_timer_timeout"]
+[connection signal="timeout" from="InfectionTimerUnmasked" to="." method="_on_infection_timer_timeout"]
 
 [editable path="FpsMovement"]

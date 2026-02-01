@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://do4sbvw4qreyk"]
+[gd_scene load_steps=4 format=3 uid="uid://lrph4bsikjdd"]
 
-[ext_resource type="Script" uid="uid://c7lcrqvyk1eek" path="res://shared/checkout/checkout.gd" id="1_2gt20"]
-[ext_resource type="PackedScene" uid="uid://dvfqvwpdwhw81" path="res://shared/cash/cash.tscn" id="2_88h5u"]
+[ext_resource type="Script" uid="uid://c7lcrqvyk1eek" path="res://shared/checkout/checkout.gd" id="1_uhdub"]
+[ext_resource type="PackedScene" uid="uid://cay4s754a75gv" path="res://shared/cash/cash_alt.tscn" id="2_uhdub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnob1"]
 size = Vector3(2, 1, 2.25)
 
 [node name="Checkout" type="Node3D" node_paths=PackedStringArray("checkout_area", "checkout_timer") groups=["checkouts"]]
-script = ExtResource("1_2gt20")
+script = ExtResource("1_uhdub")
 checkout_area = NodePath("Area3D")
 checkout_timer = NodePath("Timer")
 
@@ -15,18 +15,18 @@ checkout_timer = NodePath("Timer")
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.546329, 0.5, 0.94772434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.953671, 0.5, 0.94772434)
 shape = SubResource("BoxShape3D_mnob1")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-transform = Transform3D(1.4350473, 0, 0, 0, 1, 0, 0, 0, 1.62987, 0.3861478, 0, -1.3031671)
+transform = Transform3D(1.4350473, 0, 0, 0, 1, 0, 0, 0, 1.62987, -0.03600931, 0, -1.3031671)
 vertices = PackedVector3Array(-0.5805845, 0, -0.5460993, -0.6105423, 0, 2.0843713, 0.06785238, 0, 2.0801146, 0.08679861, 0, -0.55208874)
 affect_navigation_mesh = true
 
-[node name="CashModel" parent="." instance=ExtResource("2_88h5u")]
+[node name="CashModel2" parent="." instance=ExtResource("2_uhdub")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.27418828, 0, 0.087991774)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

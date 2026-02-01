@@ -35,7 +35,8 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 
 folder_colors={
 "res://autoload/": "teal",
-"res://characters/": "red"
+"res://characters/": "red",
+"res://scenes/": "yellow"
 }
 
 [global_group]

@@ -17,7 +17,6 @@ item = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 collision_layer = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -25,7 +24,6 @@ shape = SubResource("BoxShape3D_4qk54")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 collision_mask = 2
 input_ray_pickable = false
 
@@ -33,7 +31,6 @@ input_ray_pickable = false
 shape = SubResource("SphereShape3D_jm8ks")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-visible = false
 height = 3.0
 vertices = PackedVector3Array(-0.98418176, 0, -1.0051656, 0.977798, 0, -0.9686378, 1.0270973, 0, 0.9713696, -1.0182222, 0, 0.9858388)
 affect_navigation_mesh = true

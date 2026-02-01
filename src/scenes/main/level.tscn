@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1othmf161rsf"]
+[gd_scene load_steps=16 format=3 uid="uid://b1othmf161rsf"]
 
 [ext_resource type="PackedScene" uid="uid://21jgufvnqthl" path="res://characters/player/player.tscn" id="1_4s45t"]
 [ext_resource type="PackedScene" uid="uid://bmjm76dt4465y" path="res://shared/level/level_finish_area.tscn" id="2_oriyg"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dfh7xtwg0xs7y" path="res://shared/shelves/shelf_empty.tscn" id="6_cje4a"]
 [ext_resource type="MeshLibrary" uid="uid://dqwyk6mabfchd" path="res://shared/walls/assets/tileset.tres" id="7_k4mcv"]
 [ext_resource type="PackedScene" uid="uid://do4sbvw4qreyk" path="res://shared/checkout/Checkout.tscn" id="8_hv370"]
+[ext_resource type="Texture2D" uid="uid://tu2loawp5u7r" path="res://shared/walls/adds/Zrzut ekranu z 2026-02-01 12-15-24.png" id="8_k4mcv"]
+[ext_resource type="Texture2D" uid="uid://g06jggm6ejex" path="res://shared/walls/adds/Zrzut ekranu z 2026-02-01 12-22-45.png" id="9_muomx"]
 [ext_resource type="PackedScene" uid="uid://bfcgqdsrghtph" path="res://ui/scenes/game_over.tscn" id="10_01ket"]
 [ext_resource type="PackedScene" uid="uid://8o4xapq2qkin" path="res://ui/scenes/you_won.tscn" id="11_klfk6"]
 [ext_resource type="PackedScene" uid="uid://d1iyicjx6vxtl" path="res://shared/level/npc_spawner.tscn" id="12_irf7x"]
@@ -118,7 +120,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 7)
 
 [node name="Shelf5" parent="NavigationRegion3D/Shelves/Alley4" instance=ExtResource("6_cje4a")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.5, 0, 7)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.4831505, -0.010594606, 7.0147834)
 
 [node name="Shelf6" parent="NavigationRegion3D/Shelves/Alley4" instance=ExtResource("6_cje4a")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 7, 0, 7)
@@ -232,6 +234,30 @@ cell_scale = 2.0
 data = {
 "cells": PackedInt32Array(65535, 65534, 1048579, 65535, 65535, 1048579, 65535, 0, 1048579, 65535, 1, 1048579, 65535, 2, 1048577, 65535, 3, 1048577, 65535, 4, 1048577, 65535, 5, 1048577, 65535, 6, 1048577, 6, 65534, 1048577, 6, 65535, 1048577, 6, 0, 1048577, 6, 1, 1048577, 12, 6, 1048577, 12, 5, 1048577, 12, 4, 1048577, 12, 3, 1048577, 12, 2, 1048577, 1, 0, 1048577, 1, 1, 1048577)
 }
+
+[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/Gridmaps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2530355, 0.21441424, -3.628891)
+texture = ExtResource("8_k4mcv")
+
+[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/Gridmaps/Sprite3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.2743287, 0.28456962, 17.609852)
+texture = ExtResource("8_k4mcv")
+
+[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/Gridmaps/Sprite3D/Sprite3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12.242794, 0.012856364, 9.619841)
+texture = ExtResource("8_k4mcv")
+
+[node name="Sprite3D2" type="Sprite3D" parent="NavigationRegion3D/Gridmaps"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.919529, 0.8094442, -0.34687352)
+texture = ExtResource("9_muomx")
+
+[node name="Sprite3D2" type="Sprite3D" parent="NavigationRegion3D/Gridmaps/Sprite3D2"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.328016, 0.6062362, -4.7731)
+texture = ExtResource("9_muomx")
+
+[node name="Sprite3D2" type="Sprite3D" parent="NavigationRegion3D/Gridmaps/Sprite3D2/Sprite3D2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.284294, -0.09815931, 5.48293)
+texture = ExtResource("9_muomx")
 
 [node name="Checkouts" type="Node3D" parent="NavigationRegion3D"]
 

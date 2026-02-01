@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dd8sxlyomamc0"
-path="res://.godot/imported/shelf.glb-c6eaf4df07e1690c1ebcd42f6315c5e7.scn"
+uid="uid://b4gh8afh1k21"
+path="res://.godot/imported/papier_zestaw.glb-af9c83cf2bd940a272818bebe98bb5f9.scn"
 
 [deps]
 
-source_file="res://shared/shelves/shelf.glb"
-dest_files=["res://.godot/imported/shelf.glb-c6eaf4df07e1690c1ebcd42f6315c5e7.scn"]
+source_file="res://shared/assets/shelf_items/papier_zestaw.glb"
+dest_files=["res://.godot/imported/papier_zestaw.glb-af9c83cf2bd940a272818bebe98bb5f9.scn"]
 
 [params]
 
@@ -39,4 +39,4 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
-gltf/embedded_image_handling=2
+gltf/embedded_image_handling=1

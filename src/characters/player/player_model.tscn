@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1wvwme7n38wb"]
 
 [ext_resource type="PackedScene" uid="uid://b0evvst11gxc0" path="res://characters/player/player.glb" id="1_my2vs"]
-[ext_resource type="Shader" uid="uid://cd7da5etw7wtj" path="res://characters/player/player_shader.tres" id="2_01x27"]
+[ext_resource type="Shader" uid="uid://dr5vbbadeuk5q" path="res://characters/player/player_shader.tres" id="2_01x27"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_my2vs"]
 render_priority = 0

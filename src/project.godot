@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hackerspace2026"
-run/main_scene="uid://c36doghn0u6mp"
+run/main_scene="uid://c64pel6g4iud4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 EventBus="*res://autoload/event_bus.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
 
 [editor_plugins]
 

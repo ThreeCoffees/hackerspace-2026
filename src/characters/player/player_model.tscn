@@ -42,6 +42,3 @@ bones/18/rotation = Quaternion(0.02254437, 0.49318203, 0.8674829, -0.061127782)
 
 [node name="Cube" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_01x27")
-
-[node name="Mask" parent="Armature/Skeleton3D" index="1"]
-visible = false

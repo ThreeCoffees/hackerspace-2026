@@ -31,12 +31,10 @@ shape = SubResource("CapsuleShape3D_hiqpq")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 radius = 0.6
-debug_enabled = true
-debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="BeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("2_7o1fx")]
-blackboard = NodePath("@Node@21659")
+blackboard = NodePath("@Node@21054")
 
 [node name="VisionCone" type="Node3D" parent="."]
 script = ExtResource("3_6oo8j")

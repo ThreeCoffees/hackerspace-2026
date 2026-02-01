@@ -29,7 +29,6 @@ func check_is_item_visible(item: Node3D) -> void:
 	if ray.is_colliding():
 		print("item blocked by walls")
 	else:
-		print("item visible")
 		item_visible.emit(item.global_position)
 		
 		

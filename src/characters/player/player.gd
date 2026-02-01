@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var is_mask_on: bool = true
 @export var infection_timer: Timer
+@export var infection_timer_unmasked: Timer
 @export var raycast: RayCast3D
 var is_being_infected: bool = false
 
@@ -20,10 +21,15 @@ func _input(event: InputEvent) -> void:
 		print("is mask on:", is_mask_on)
 
 func _physics_process(delta: float) -> void:
-	if is_being_infected == true and infection_timer.is_stopped():
-		infection_timer.start()
-	if is_being_infected == false and not infection_timer.is_stopped():
+	if is_being_infected == true:
+		if is_mask_on and infection_timer.is_stopped():
+			infection_timer.start()
+		elif infection_timer_unmasked.is_stopped():
+			infection_timer_unmasked.start()
+			print("unmasked start")
+	if is_being_infected == false:
 		infection_timer.stop()
+		infection_timer_unmasked.stop()
 
 	is_being_infected = false
 		

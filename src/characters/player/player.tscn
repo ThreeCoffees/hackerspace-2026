@@ -33,6 +33,9 @@ shape = SubResource("CapsuleShape3D_8ux74")
 [node name="player" parent="Mesh" instance=ExtResource("2_c6leb")]
 transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 1.1550342, 0)
 
+[node name="Mask" parent="Mesh/player/Armature/Skeleton3D" index="1"]
+visible = false
+
 [node name="ThrownItemSpawn" type="Node3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 
@@ -78,4 +81,5 @@ one_shot = true
 [connection signal="timeout" from="InfectionTimer" to="." method="_on_infection_timer_timeout"]
 [connection signal="timeout" from="InfectionTimerUnmasked" to="." method="_on_infection_timer_timeout"]
 
+[editable path="Mesh/player"]
 [editable path="FpsMovement"]

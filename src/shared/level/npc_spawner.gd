@@ -1,12 +1,14 @@
 extends Node3D
 
 enum NpcType{
-	MASKED
+	MASKED,
+	UNMASKED,
 }
 
 @export var spawn_weights: Dictionary[NpcType, int]
 @export var spawn_timer: Timer
 @export var masked_npc: PackedScene
+@export var unmasked_npc: PackedScene
 
 var weighted_array
 

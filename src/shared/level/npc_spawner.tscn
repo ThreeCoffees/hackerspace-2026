@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1iyicjx6vxtl"]
+[gd_scene load_steps=4 format=3 uid="uid://d1iyicjx6vxtl"]
 
 [ext_resource type="Script" uid="uid://cf3i70sxc2b2m" path="res://shared/level/npc_spawner.gd" id="1_wyxno"]
 [ext_resource type="PackedScene" uid="uid://b25ciyddvh80l" path="res://characters/npc/npc.tscn" id="2_fxh2u"]
+[ext_resource type="PackedScene" uid="uid://3kon6hils8a3" path="res://characters/npc/unmasked_npc.tscn" id="3_fuj44"]
 
 [node name="NPCSpawner" type="Node3D" node_paths=PackedStringArray("spawn_timer")]
 script = ExtResource("1_wyxno")
 spawn_weights = Dictionary[int, int]({
-0: 2
+0: 2,
+1: 1
 })
 spawn_timer = NodePath("Timer")
 masked_npc = ExtResource("2_fxh2u")
+unmasked_npc = ExtResource("3_fuj44")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

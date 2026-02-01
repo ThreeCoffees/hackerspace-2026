@@ -24,6 +24,8 @@ func spawn_customer() -> void:
 	match customer:
 		NpcType.MASKED: 
 			instance = masked_npc.instantiate()
+		NpcType.UNMASKED: 
+			instance = unmasked_npc.instantiate()
 	add_child(instance)
 	instance.global_position = global_position
 

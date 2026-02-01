@@ -10,6 +10,7 @@ var player: CharacterBody3D
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	Engine.time_scale = 1.0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_mask"):
